@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://d4jfoobk8yv34"]
 
 [ext_resource type="PackedScene" uid="uid://dgme6dw1flge5" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bugaq53ph4wh0" path="res://assets/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bhjnjkxtqu12" path="res://scenes/ui.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://ctlqi8og8j2ev" path="res://scenes/pickup.tscn" id="4_jyhfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(373.33334, 20)
 
-[node name="Node2D" type="Node2D" unique_id=1351415594]
+[node name="Main" type="Node2D" unique_id=1351415594]
+script = ExtResource("1_sugp2")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=732633237]
 position = Vector2(-1, 0)
@@ -17,3 +21,13 @@ shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="Player" parent="." unique_id=59921298 instance=ExtResource("1_o5qli")]
 position = Vector2(235, 199)
+
+[node name="UI" parent="." unique_id=87986574 instance=ExtResource("2_0wfyh")]
+
+[node name="Timer" type="Timer" parent="." unique_id=2093164933]
+autostart = true
+
+[node name="Pickup" parent="." unique_id=707575940 instance=ExtResource("4_jyhfs")]
+position = Vector2(905, 501)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bhjnjkxtqu12"]
+
+[ext_resource type="Script" uid="uid://co2otlmsne3pf" path="res://assets/scripts/progress_bar.gd" id="1_nt7q6"]
+
+[node name="UI" type="Control" unique_id=87986574]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=229974149]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 114.0
+offset_right = 56.0
+offset_bottom = 444.0
+theme_override_colors/font_color = Color(14.948135, 18.892157, 18.892157, 1)
+value = 100.0
+fill_mode = 3
+script = ExtResource("1_nt7q6")
