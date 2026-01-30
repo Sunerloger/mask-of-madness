@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://3koyra5bt3hh"]
+
+[ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://player.tscn" id="1_u52ul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vonw3"]
+size = Vector2(220, 177)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u52ul"]
+cull_mode = 1
+polygon = PackedVector2Array(39, -88, 259, -88, 260, 89, 40, 89)
+
+[node name="Level" type="Node2D" unique_id=639538168]
+
+[node name="Player" parent="." unique_id=68192137 instance=ExtResource("1_u52ul")]
+position = Vector2(185, 206)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=365030197]
+position = Vector2(81, 551)
+scale = Vector2(0.6316879, 0.6718468)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1399364310]
+position = Vector2(1024.24, -522.4405)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=510223772]
+position = Vector2(633, 199)
+scale = Vector2(0.6316879, 0.6718468)
+occluder = SubResource("OccluderPolygon2D_u52ul")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=956845059]
+position = Vector2(561, 188)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1054539726]
+z_index = -6
+position = Vector2(-688, -245.00002)
+scale = Vector2(2.7147775, 2.1664612)
+color = Color(0.15622869, 0.095678695, 0.054583497, 1)
+polygon = PackedVector2Array(214, 104, 718.6623, 102.16434, 715, 562, 211.80261, 565.6713)
