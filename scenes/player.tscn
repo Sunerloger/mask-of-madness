@@ -1,17 +1,36 @@
-[gd_scene format=3 uid="uid://dgme6dw1flge5"]
+[gd_scene format=3 uid="uid://ckoglvcvqgaqs"]
 
-[ext_resource type="Texture2D" uid="uid://cb0e6vgpl6fbo" path="res://assets/sprites/icon.svg" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://8wqx3vp0usx3" path="res://assets/scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://dmaedpif5w0s3" path="res://assets/scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dy1qlq0pot8ds" path="res://assets/sprites/temp_player.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://jkjfp3je2rev" path="res://assets/new_gradient_texture_2d.tres" id="3_qhqgy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 34.132095
 
-[node name="Player" type="CharacterBody2D" unique_id=59921298]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g2els"]
+polygon = PackedVector2Array(-7, 0, -7, -4, -4, -8, 1, -9, 381, -103.39622, -143, -99.622635, -141, 103.39622, 387, 117.73584, 1, 7, -4, 5, -7, 2)
+
+[node name="Player" type="CharacterBody2D" unique_id=68192137]
 script = ExtResource("1_g2els")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=248161280]
-scale = Vector2(0.81, 0.81)
-texture = ExtResource("1_3vyb7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086097468]
+shape = SubResource("CircleShape2D_onrkg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135537738]
-scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_g2els")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=624848177]
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_g2els")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1077787437]
+energy = 2.05
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = ExtResource("3_qhqgy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D" unique_id=948664585]
+z_index = -1
+occluder = SubResource("OccluderPolygon2D_g2els")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1658004506]
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("3_qhqgy")
