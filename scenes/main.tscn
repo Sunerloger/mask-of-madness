@@ -4,10 +4,9 @@
 [ext_resource type="Script" uid="uid://bugaq53ph4wh0" path="res://assets/scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bhjnjkxtqu12" path="res://scenes/ui.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://d0cck7d0rr4n6" path="res://scenes/roamerEnemy.tscn" id="4_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://chut5yo1rjwj0" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://btpo6clndtut" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://6w5huv2jvyje" path="res://scenes/levelExit.tscn" id="6_tefeu"]
-[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://bpowpx16atsxm" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jyhfs"]
 polygon = PackedVector2Array(614, 216, 779, 216, 779, 349, 614, 349)
@@ -45,6 +44,9 @@ scale = Vector2(8.030868, 8.030865)
 color = Color(0.21229082, 0.124217756, 0.058720484, 1)
 polygon = PackedVector2Array(-204, -207, -204, 439, 948, 441, 950, -207)
 
+[node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=51475383]
+tile_set = SubResource("TileSet_tipki")
+
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
 
 [node name="UI" parent="UILayer" unique_id=87986574 instance=ExtResource("2_0wfyh")]
@@ -52,9 +54,6 @@ polygon = PackedVector2Array(-204, -207, -204, 439, 948, 441, 950, -207)
 [node name="levelExit" parent="." unique_id=1685547513 instance=ExtResource("6_tefeu")]
 position = Vector2(1024, 366)
 scale = Vector2(4.1786594, 4.238936)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=419323589]
-tile_set = ExtResource("7_o6xl0")
 
 [node name="Spawnables" type="Node2D" parent="." unique_id=525800981]
 
