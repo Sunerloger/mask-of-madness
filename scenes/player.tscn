@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmaedpif5w0s3" path="res://assets/scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bs3xkvcih0trc" path="res://assets/sprites/player.png" id="2_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://8wpqfkggik4h" path="res://assets/sprites/lightconev2(1).png" id="3_fjrip"]
+[ext_resource type="Texture2D" uid="uid://dfxlbth5qcvoc" path="res://assets/sprites/conev2.png" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://jkjfp3je2rev" path="res://assets/textures/new_gradient_texture_2d.tres" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://assets/scripts/sanity.gd" id="4_qlg0r"]
@@ -31,7 +31,8 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 2.0
 texture = ExtResource("3_fjrip")
-offset = Vector2(650, -20)
+offset = Vector2(900, 0)
+texture_scale = 0.8
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1658004506]
 visible = false
