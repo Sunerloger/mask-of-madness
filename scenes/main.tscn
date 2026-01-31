@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bhjnjkxtqu12" path="res://scenes/ui.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://kyorgtykxdwg" path="res://assets/tilemap/tilemap_deco_elements.png" id="2_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://chut5yo1rjwj0" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://jnra64qpi14s" path="res://scenes/levelExit.tscn" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://dkipgp48phcag" path="res://assets/scripts/goal_spawner.gd" id="7_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bpowpx16atsxm" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cc5wo2i3x01fc" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
 [ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="9_85g3d"]
@@ -282,10 +282,6 @@ texture = SubResource("GradientTexture2D_jbj1t")
 [node name="Enemies" type="Node2D" parent="." unique_id=1999643480]
 position = Vector2(905, 501)
 
-[node name="levelExit" parent="." unique_id=1685547513 instance=ExtResource("6_tefeu")]
-position = Vector2(1024, 366)
-scale = Vector2(4.1786594, 4.238936)
-
 [node name="Spawnables" type="Node2D" parent="." unique_id=525800981]
 
 [node name="Spawners" type="Node2D" parent="." unique_id=14147442]
@@ -297,6 +293,9 @@ max_tries = 60
 [node name="HealthPickupSpawner" parent="Spawners" unique_id=548179527 instance=ExtResource("7_o6xl0")]
 
 [node name="EnemySpawner" parent="Spawners" unique_id=1973647147 instance=ExtResource("8_tipki")]
+
+[node name="GoalSpawner" type="Node2D" parent="Spawners" unique_id=1179497199]
+script = ExtResource("7_eb6dy")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=375451037]
 
@@ -368,6 +367,14 @@ scale = Vector2(47.999996, 27)
 [node name="CanvasModulate" type="CanvasModulate" parent="SanityModifier" unique_id=1585395005]
 
 [node name="UILayer2" type="CanvasLayer" parent="." unique_id=691363350]
+
+[node name="GoalDeadZone" type="Area2D" parent="." unique_id=695612090]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDeadZone" unique_id=1872937013]
+position = Vector2(364, 176)
+scale = Vector2(0.44000077, 0.44000077)
+shape = SubResource("RectangleShape2D_85g3d")
+disabled = true
 
 [node name="SpawnVolume" type="Area2D" parent="." unique_id=1692167653]
 
