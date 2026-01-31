@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c5gjjv5xvxprk"]
+
+[ext_resource type="Script" uid="uid://bh2i11u6v0wry" path="res://assets/scripts/victoryScene.gd" id="1_03u3s"]
+[ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="1_ppghm"]
+[ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="2_e22nn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e22nn"]
+font = ExtResource("1_ppghm")
+font_size = 348
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.7529412)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppghm"]
+font = ExtResource("2_e22nn")
+font_size = 63
+
+[node name="VictoryScene" type="Control" unique_id=1033061261]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_03u3s")
+metadata/_edit_horizontal_guides_ = [609.0]
+metadata/_edit_vertical_guides_ = [290.0, 1630.0]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=22187542]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 1920.0
+offset_bottom = 1078.0
+color = Color(0.21568628, 0.05490196, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1579382628]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 1916.0
+offset_bottom = 396.0
+text = "Congratulations You Escaped!"
+label_settings = SubResource("LabelSettings_e22nn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="." unique_id=2108172123]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 607.0
+offset_right = 672.04877
+offset_bottom = 785.0
+
+[node name="Label" type="Label" parent="Restart" unique_id=1547625133]
+layout_mode = 0
+offset_right = 382.0
+offset_bottom = 180.0
+text = "RESTART"
+label_settings = SubResource("LabelSettings_ppghm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="." unique_id=1642647741]
+layout_mode = 0
+offset_left = 1248.0
+offset_top = 607.0
+offset_right = 1630.0488
+offset_bottom = 785.0
+
+[node name="Label" type="Label" parent="Exit" unique_id=2035459515]
+layout_mode = 0
+offset_right = 382.0
+offset_bottom = 180.0
+text = "EXIT"
+label_settings = SubResource("LabelSettings_ppghm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
