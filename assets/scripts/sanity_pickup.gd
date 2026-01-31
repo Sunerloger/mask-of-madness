@@ -6,3 +6,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var sanity = body.get_node("Sanity")
 		sanity.update_current_sanity(5)
 		queue_free()
+
+
+func _on_despawn_timer_timeout() -> void:
+	queue_free()

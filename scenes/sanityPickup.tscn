@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0wsly6guv5jr"]
 
-[ext_resource type="Script" path="res://assets/scripts/sanity_pickup.gd" id="1_7cqbe"]
+[ext_resource type="Script" uid="uid://causv5klvq26r" path="res://assets/scripts/sanity_pickup.gd" id="1_7cqbe"]
 [ext_resource type="Texture2D" uid="uid://bgyr7vejpxskd" path="res://assets/sprites/battery.png" id="2_ahnjd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
@@ -19,4 +19,10 @@ shape = SubResource("RectangleShape2D_sugp2")
 scale = Vector2(1.28125, 1.28125)
 texture = ExtResource("2_ahnjd")
 
+[node name="DespawnTimer" type="Timer" parent="." unique_id=67852756]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

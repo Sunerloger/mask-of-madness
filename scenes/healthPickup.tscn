@@ -18,4 +18,10 @@ shape = SubResource("RectangleShape2D_sugp2")
 scale = Vector2(0.40625, 0.40625)
 texture = ExtResource("2_p625y")
 
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1102741404]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
