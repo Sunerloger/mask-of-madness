@@ -18,7 +18,7 @@ color = Color(0.21229082, 0.124217756, 0.058720484, 1)
 polygon = PackedVector2Array(-204, -207, -204, 439, 948, 441, 950, -207)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=727007295]
-color = Color(0.41981313, 0.41981313, 0.4198131, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Box" type="Polygon2D" parent="." unique_id=1344022613]
 polygon = PackedVector2Array(617, 216, 779, 216, 779, 349, 614, 349)

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d0cck7d0rr4n6"]
+
+[ext_resource type="Script" uid="uid://bf1kwi27rlutx" path="res://assets/scripts/roamerEnemey.gd" id="1_1gyx3"]
+[ext_resource type="Texture2D" uid="uid://p647bojs85kq" path="res://assets/sprites/temp_enemy_tex.tres" id="2_ojp5j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snias"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ojp5j"]
+cull_mode = 1
+polygon = PackedVector2Array(0, -774.7125, -13.474152, -753.19275, -23.579765, -581.0344, -32.00111, -258.23752, -32.00111, 150.63855, -27.790438, 451.91565, -16.000555, 731.673, 0, 796.2323)
+
+[node name="roamerEnemy" type="CharacterBody2D" unique_id=549486802]
+scale = Vector2(1.00441, 1)
+script = ExtResource("1_1gyx3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=849365580]
+scale = Vector2(1.3461419, 1.3461419)
+texture = ExtResource("2_ojp5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032296548]
+scale = Vector2(3.8672512, 3.8672512)
+shape = SubResource("CircleShape2D_snias")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=2111847193]
+z_index = -2
+scale = Vector2(1.182245, 0.046468846)
+occluder = SubResource("OccluderPolygon2D_ojp5j")

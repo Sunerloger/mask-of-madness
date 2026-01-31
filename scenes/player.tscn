@@ -13,6 +13,7 @@ radius = 34.132095
 polygon = PackedVector2Array(-7, 0, -7, -4, -4, -8, 1, -9, 381, -103.39622, -143, -99.622635, -141, 103.39622, 387, 117.73584, 1, 7, -4, 5, -7, 2)
 
 [node name="Player" type="CharacterBody2D" unique_id=68192137 groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086097468]
