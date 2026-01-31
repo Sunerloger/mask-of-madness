@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cc5wo2i3x01fc" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
 [ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="9_85g3d"]
 [ext_resource type="Shader" uid="uid://2wf1mrrl3qs8" path="res://shaders/post_processing_effects/canvas_item/wobble_shader.gdshader" id="10_choun"]
+[ext_resource type="Script" uid="uid://8664ji0a8snp" path="res://assets/scripts/sanity_modifier.gd" id="10_ya4ey"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_choun"]
 blend_mode = 2
@@ -90,9 +91,16 @@ scale = Vector2(2.9301312, 2.9301312)
 color = Color(0.58, 0.58, 0.58, 1)
 polygon = PackedVector2Array(-2665, -1655.7893, -2679, 1918, 3230, 1893, 3223, -1635)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=969062095]
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2147157223]
+[node name="UI" parent="UILayer" unique_id=87986574 instance=ExtResource("2_0wfyh")]
+
+[node name="SanityModifier" type="Node2D" parent="." unique_id=736974104]
+script = ExtResource("10_ya4ey")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SanityModifier" unique_id=969062095]
+
+[node name="ColorRect" type="ColorRect" parent="SanityModifier/CanvasLayer" unique_id=2147157223]
 visible = false
 material = SubResource("ShaderMaterial_choun")
 offset_left = -34.0
@@ -101,6 +109,4 @@ offset_right = 6.0
 offset_bottom = 37.0
 scale = Vector2(47.999996, 27)
 
-[node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
-
-[node name="UI" parent="UILayer" unique_id=87986574 instance=ExtResource("2_0wfyh")]
+[node name="CanvasModulate" type="CanvasModulate" parent="SanityModifier" unique_id=1585395005]
