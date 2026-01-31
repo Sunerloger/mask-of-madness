@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://assets/scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bhjnjkxtqu12" path="res://scenes/ui.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://d0cck7d0rr4n6" path="res://scenes/roamerEnemy.tscn" id="4_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://chut5yo1rjwj0" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://6w5huv2jvyje" path="res://scenes/levelExit.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://bpowpx16atsxm" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://cc5wo2i3x01fc" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://g8ahwlxgn5xo" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
+[ext_resource type="PackedScene" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
 [ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="9_85g3d"]
 [ext_resource type="Shader" uid="uid://2wf1mrrl3qs8" path="res://shaders/post_processing_effects/canvas_item/wobble_shader.gdshader" id="10_choun"]
 
@@ -42,9 +42,6 @@ script = ExtResource("1_sugp2")
 [node name="Enemies" type="Node2D" parent="." unique_id=1999643480]
 position = Vector2(905, 501)
 
-[node name="roamerEnemy" parent="Enemies" unique_id=549486802 instance=ExtResource("4_tbgi4")]
-position = Vector2(-428, -273)
-
 [node name="Player" parent="." unique_id=59921298 instance=ExtResource("1_o5qli")]
 position = Vector2(424, 148)
 
@@ -76,6 +73,7 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAACAAIAAAAAAAMAAAABAAQAAAADAAMAAAAIAAEAAAABAAIAAAAFAP//AAADAAMAAAAEAP//AAABAAMAAAABAP7/AAAAAAMAAAD//wEAAAAAAAMAAAD8/wIAAAAAAAAAAAD8/wMAAAABAAIAAAD9/wMAAAACAAMAAAD+/wMAAAADAAMAAAAAAAQAAAABAAMAAAD+//3/AAADAAMAAAD9//3/AAABAAAAAAD9//7/AAAAAAEAAAD9////AAAAAAIAAAAIAP7/AAABAAIAAAAJAP7/AAADAAMAAAAKAAEAAAACAAMAAAALAAIAAAAAAAIAAAALAAEAAAADAAAAAAAJAAEAAAACAAMAAAAIAAAAAAAAAAAAAAAFAAMAAAAAAAIAAAAIAAMAAAAAAAAAAAAIAAQAAAABAAIAAAAJAAQAAAADAAMAAAAEAAQAAAAAAAMAAAALAP//AAAAAAMAAAD6/wQAAAAAAAEAAAD6/wUAAAAAAAIAAAD5/wMAAAABAAMAAAD6/wMAAAADAAAAAAD7//3/AAAAAAMAAAADAPz/AAAAAAMAAAAEAP3/AAABAAMAAAAFAP3/AAADAAMAAAABAPz/AAADAAMAAAAAAPz/AAABAAMAAAAMAP3/AAAAAAMAAAANAP//AAAAAAAAAAANAAAAAAAAAAIAAAAMAAQAAAAAAAMAAAD6//7/AAADAAMAAAD5//7/AAABAAMAAAD4/wEAAAACAAMAAAD5/wEAAAACAAMAAAD6/wEAAAACAAMAAAD7/wEAAAADAAIAAAD3/wEAAAABAAMAAAD7/wAAAAAAAAEAAAD7////AAAAAAAAAAAIAP3/AAAAAAAAAAA=")
 tile_set = ExtResource("9_85g3d")
 y_sort_origin = 200
+metadata/Blocking = false
 
 [node name="mask" type="Sprite2D" parent="CanvasGroup" unique_id=108153130]
 material = SubResource("CanvasItemMaterial_choun")

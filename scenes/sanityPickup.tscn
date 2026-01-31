@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://0wsly6guv5jr"]
 
-[ext_resource type="Script" uid="uid://causv5klvq26r" path="res://assets/scripts/sanity_pickup.gd" id="1_7cqbe"]
-[ext_resource type="Texture2D" uid="uid://cb0e6vgpl6fbo" path="res://assets/sprites/icon.svg" id="1_pg2rt"]
+[ext_resource type="Script" path="res://assets/scripts/sanity_pickup.gd" id="1_7cqbe"]
+[ext_resource type="Texture2D" uid="uid://bgyr7vejpxskd" path="res://assets/sprites/battery.png" id="2_ahnjd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
-size = Vector2(45.875, 45.25)
+size = Vector2(59, 25)
 
 [node name="SanityPickup" type="Area2D" unique_id=707575940]
 collision_layer = 16
@@ -12,10 +12,11 @@ collision_mask = 2
 script = ExtResource("1_7cqbe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=105963796]
+position = Vector2(2.5, -3.5)
 shape = SubResource("RectangleShape2D_sugp2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1592054348]
-scale = Vector2(0.40625, 0.40625)
-texture = ExtResource("1_pg2rt")
+scale = Vector2(1.28125, 1.28125)
+texture = ExtResource("2_ahnjd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
