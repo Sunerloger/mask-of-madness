@@ -61,6 +61,9 @@ shape = SubResource("CircleShape2D_qlg0r")
 wait_time = 0.5
 one_shot = true
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=432396695]
+position_smoothing_enabled = true
+
 [connection signal="timeout" from="Sanity/Timer" to="Sanity" method="_on_timer_timeout"]
 [connection signal="body_entered" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_body_exited"]
