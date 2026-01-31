@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ctlqi8og8j2ev" path="res://scenes/pickup.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://d0cck7d0rr4n6" path="res://scenes/roamerEnemy.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://6w5huv2jvyje" path="res://scenes/levelExit.tscn" id="6_tefeu"]
+[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="7_o6xl0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jyhfs"]
 polygon = PackedVector2Array(614, 216, 779, 216, 779, 349, 614, 349)
@@ -47,3 +48,6 @@ position = Vector2(477, 228)
 [node name="levelExit" parent="." unique_id=1685547513 instance=ExtResource("6_tefeu")]
 position = Vector2(1024, 366)
 scale = Vector2(4.1786594, 4.238936)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=419323589]
+tile_set = ExtResource("7_o6xl0")
