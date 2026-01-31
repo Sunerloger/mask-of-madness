@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4yn7u0jiis7c"]
 
-[ext_resource type="PackedScene" uid="uid://dgme6dw1flge5" path="res://scenes/player.tscn" id="1_56bqt"]
+[ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_56bqt"]
 [ext_resource type="PackedScene" uid="uid://855g3gkup8e6" path="res://scenes/teleportationEnemy.tscn" id="2_56bqt"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3dtr5"]
