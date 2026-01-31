@@ -1,22 +1,28 @@
 extends EnemyBase
 
-const SPEED = 30.0
-const TP_DISTANCE = 200
+var SPEED = 30.0
+const MOVE_SPEED = 30
+const TP_DISTANCE = 150
 const ZIGZAG_MIN_DISTANCE = 200
 const ZIGZAG_ROTATION_ANGLE = 0.7
 var ZIGZAG_DIRECTION = 1
-@onready var player = get_tree().get_first_node_in_group("player")
 @export var strength: int = 3
 
 func _physics_process(delta: float) -> void:
-	var direction = (player.global_position - global_position).normalized()
-	velocity = direction * SPEED
+	if(playerIsLooking()):
+		SPEED = 0
+	else:
+		SPEED = MOVE_SPEED
+	velocity = getDirectionToPlayer() * SPEED
 	look_at(player.global_position)
 	move_and_slide()
 
+# Teleportation timer
 func _on_timer_timeout():
-	var direction = getPlayerDirection()
-	if(isFarFromPlayer()):
+	if(playerIsLooking()):
+		return
+	var direction = getDirectionToPlayer()
+	if(isFarFromPlayer()): # stop zig zaging when really close to player 
 		direction = direction.rotated(ZIGZAG_ROTATION_ANGLE * ZIGZAG_DIRECTION)
 	teleport(direction.normalized() * TP_DISTANCE)
 	ZIGZAG_DIRECTION *= -1
@@ -27,11 +33,5 @@ func get_strength():
 func teleport(tp_vector):
 	global_position += tp_vector
 	
-func getPlayerDirection():
-	return (player.global_position - global_position).normalized()
-	
-func getPlayerDistance():
-	return global_position.distance_to(player.global_position)
-	
 func isFarFromPlayer():
-	return getPlayerDistance() > ZIGZAG_MIN_DISTANCE
+	return getDistanceToPlayer() > ZIGZAG_MIN_DISTANCE
