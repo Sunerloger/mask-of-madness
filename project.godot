@@ -19,6 +19,10 @@ config/icon="res://assets/sprites/icon.svg"
 
 Global="*uid://dsni4rqa6f2u6"
 
+[global_group]
+
+player=""
+
 [input]
 
 Left={

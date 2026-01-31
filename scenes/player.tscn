@@ -2,11 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://cb0e6vgpl6fbo" path="res://assets/sprites/icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://8wqx3vp0usx3" path="res://assets/scripts/player.gd" id="1_g2els"]
-[ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://scenes/sanity.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://assets/scripts/sanity.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
-[node name="Player" type="CharacterBody2D" unique_id=59921298]
+[node name="Player" type="CharacterBody2D" unique_id=59921298 groups=["player"]]
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=248161280]
@@ -22,5 +23,8 @@ script = ExtResource("3_qhqgy")
 
 [node name="Timer" type="Timer" parent="Sanity" unique_id=910753701]
 autostart = true
+
+[node name="Health" type="Node2D" parent="." unique_id=1079864545]
+script = ExtResource("4_dqkch")
 
 [connection signal="timeout" from="Sanity/Timer" to="Sanity" method="_on_timer_timeout"]
