@@ -17,7 +17,6 @@ script = ExtResource("1_sugp2")
 [node name="World" type="Node2D" parent="." unique_id=342766839]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="World" unique_id=2055848493]
-color = Color(0, 0, 0, 1)
 
 [node name="Box" type="Polygon2D" parent="World" unique_id=172241963]
 polygon = PackedVector2Array(617, 216, 779, 216, 779, 349, 614, 349)
@@ -29,7 +28,8 @@ occluder = SubResource("OccluderPolygon2D_jyhfs")
 [node name="Polygon2D" type="Polygon2D" parent="World" unique_id=563746517]
 z_index = -1
 position = Vector2(204, 207)
-color = Color(0.21229082, 0.124217756, 0.058720484, 1)
+scale = Vector2(22.314468, 17.563978)
+color = Color(0.45995867, 0.45995867, 0.4599586, 1)
 polygon = PackedVector2Array(-204, -207, -204, 439, 948, 441, 950, -207)
 
 [node name="Pickup" parent="World" unique_id=707575940 instance=ExtResource("4_jyhfs")]
