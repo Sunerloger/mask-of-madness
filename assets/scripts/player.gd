@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
+const NEAR_EXIT_DISTANCE = 500 # TODO 
 @onready var lightCone := $PointLight2D
 @onready var health := $Health
 @onready var sanity := $Sanity
 @onready var sprite_2d: Sprite2D = $Sprite2D
 var facing_direction: Vector2
+
+@onready var exit = get_tree().get_first_node_in_group("exit")
 
 const TARGET_Y_SCALE := 2.0
 const DURATION := 1.0
@@ -48,3 +51,6 @@ func _physics_process(delta: float) -> void:
 		sprite_2d.flip_h = false
 	
 	move_and_slide()
+
+func isNearExit() -> bool:
+	return global_position.distance_to(exit.global_position) < NEAR_EXIT_DISTANCE
