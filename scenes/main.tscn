@@ -1,45 +1,93 @@
-[gd_scene format=3 uid="uid://d4jfoobk8yv34"]
+[gd_scene format=4 uid="uid://d4jfoobk8yv34"]
 
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://bugaq53ph4wh0" path="res://assets/scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bhjnjkxtqu12" path="res://scenes/ui.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://c7sfbrhnkurlt" path="res://addons/wfc/nodes/generator_2d.gd" id="3_tipki"]
+[ext_resource type="Script" uid="uid://b1rctxdlkifqs" path="res://addons/wfc/nodes/layered_map_2d.gd" id="4_85g3d"]
 [ext_resource type="PackedScene" uid="uid://0wsly6guv5jr" path="res://scenes/pickup.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://d0cck7d0rr4n6" path="res://scenes/roamerEnemy.tscn" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://c68ekimghh2r3" path="res://addons/wfc/problems/2d/mappers/mapper_2d_factory.gd" id="5_choun"]
+[ext_resource type="TileSet" uid="uid://f5ab14o2k2wy" path="res://addons/wfc/examples/assets/kenney-tiny-dungeon/tile-set-main.tres" id="6_choun"]
+[ext_resource type="TileSet" uid="uid://drvu3d0pwtf50" path="res://addons/wfc/examples/assets/kenney-tiny-dungeon/tile-set-decorations.tres" id="7_ya4ey"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jyhfs"]
 polygon = PackedVector2Array(614, 216, 779, 216, 779, 349, 614, 349)
 
+[sub_resource type="Resource" id="Resource_ya4ey"]
+script = ExtResource("5_choun")
+
 [node name="Main" type="Node2D" unique_id=1351415594]
 script = ExtResource("1_sugp2")
 
-[node name="World" type="Node2D" parent="." unique_id=342766839]
+[node name="Spawnables" type="Node2D" parent="." unique_id=240768403]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="World" unique_id=2055848493]
-color = Color(0, 0, 0, 1)
+[node name="Pickup" parent="Spawnables" unique_id=707575940 instance=ExtResource("4_jyhfs")]
+position = Vector2(905, 501)
 
-[node name="Box" type="Polygon2D" parent="World" unique_id=172241963]
-polygon = PackedVector2Array(617, 216, 779, 216, 779, 349, 614, 349)
+[node name="Map" type="Node2D" parent="." unique_id=1345243964]
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="World/Box" unique_id=1018881015]
-z_index = -2
-occluder = SubResource("OccluderPolygon2D_jyhfs")
-
-[node name="Polygon2D" type="Polygon2D" parent="World" unique_id=563746517]
+[node name="LevelOutline" type="Polygon2D" parent="Map" unique_id=563746517]
 z_index = -1
-position = Vector2(204, 207)
+position = Vector2(-1370, -287)
+scale = Vector2(5.5, 5.5)
 color = Color(0.21229082, 0.124217756, 0.058720484, 1)
 polygon = PackedVector2Array(-204, -207, -204, 439, 948, 441, 950, -207)
 
-[node name="Pickup" parent="World" unique_id=707575940 instance=ExtResource("4_jyhfs")]
-position = Vector2(905, 501)
+[node name="Obstacle" type="Polygon2D" parent="Map" unique_id=172241963]
+polygon = PackedVector2Array(617, 216, 779, 216, 779, 349, 614, 349)
 
-[node name="Player" parent="World" unique_id=59921298 instance=ExtResource("1_o5qli")]
-position = Vector2(424, 148)
-collision_layer = 1
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Map/Obstacle" unique_id=1018881015]
+z_index = -2
+occluder = SubResource("OccluderPolygon2D_jyhfs")
 
-[node name="roamerEnemy" parent="World" unique_id=549486802 instance=ExtResource("4_tbgi4")]
+[node name="CanvasModulate" type="CanvasModulate" parent="Map" unique_id=2055848493]
+
+[node name="WFC2DGenerator" type="Node" parent="Map" unique_id=102699072]
+script = ExtResource("3_tipki")
+target = NodePath("../WFC2DLayeredMapTarget")
+rect = Rect2i(0, 0, 16, 16)
+positive_sample = NodePath("../WFC2DLayeredMapSample")
+start_on_ready = true
+metadata/_custom_type_script = "uid://c7sfbrhnkurlt"
+
+[node name="WFC2DLayeredMapTarget" type="Node" parent="Map" unique_id=732263479]
+script = ExtResource("4_85g3d")
+mapper_factory = SubResource("Resource_ya4ey")
+metadata/_custom_type_script = "uid://b1rctxdlkifqs"
+
+[node name="LayerMain" type="TileMapLayer" parent="Map/WFC2DLayeredMapTarget" unique_id=410486108]
+scale = Vector2(5, 5)
+tile_set = ExtResource("6_choun")
+
+[node name="LayerDecoration" type="TileMapLayer" parent="Map/WFC2DLayeredMapTarget" unique_id=159835001]
+scale = Vector2(5, 5)
+tile_set = ExtResource("7_ya4ey")
+
+[node name="WFC2DLayeredMapSample" type="Node" parent="Map" unique_id=65382375]
+script = ExtResource("4_85g3d")
+mapper_factory = SubResource("Resource_ya4ey")
+metadata/_custom_type_script = "uid://b1rctxdlkifqs"
+
+[node name="LayerMain" type="TileMapLayer" parent="Map/WFC2DLayeredMapSample" unique_id=1601310020]
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAD+//j/AAAEAAMAAAD///j/AAAEAAMAAAAAAPj/AAAEAAMAAAABAPj/AAAEAAMAAAACAPj/AAAEAAMAAAADAPj/AAAEAAMAAAAEAPj/AAAEAAMAAAAFAPj/AAAEAAMAAAAGAPj/AAAEAAMAAAAGAPn/AAAAAAQAAAAFAPn/AAAAAAQAAAAEAPn/AAAAAAQAAAD///n/AAAAAAQAAAD+//n/AAAAAAQAAAAAAPn/AAAAAAQAAAABAPn/AAAAAAQAAAACAPn/AAAAAAQAAAADAPn/AAAAAAQAAAD+//r/AAAAAAQAAAD///r/AAAAAAQAAAAAAPr/AAAAAAQAAAABAPr/AAAAAAQAAAACAPr/AAAAAAQAAAADAPr/AAAAAAQAAAAEAPr/AAABAAQAAAAFAPr/AAABAAQAAAAGAPr/AAABAAQAAAD+//v/AAAAAAQAAAD///v/AAAAAAQAAAAAAPv/AAAAAAQAAAABAPv/AAAGAAMAAAACAPv/AAAAAAQAAAADAPv/AAAAAAQAAAAEAPv/AAAAAAQAAAAFAPv/AAABAAQAAAAHAPj/AAAEAAMAAAAHAPn/AAAAAAQAAAAHAPr/AAABAAQAAAAIAPj/AAAEAAMAAAAIAPn/AAAAAAQAAAAIAPr/AAAAAAQAAAAJAPj/AAAEAAMAAAAJAPn/AAAAAAQAAAAJAPr/AAAAAAQAAAAIAPv/AAAAAAQAAAAHAPv/AAAAAAQAAAAHAPz/AAAAAAQAAAAHAP3/AAAAAAQAAAAIAP3/AAAAAAQAAAAJAP3/AAAAAAQAAAAKAP3/AAAAAAQAAAALAP3/AAAAAAQAAAAMAP3/AAAAAAQAAAANAP3/AAAAAAQAAAAOAP3/AAAAAAQAAAAPAP3/AAAAAAQAAAAQAP3/AAAAAAQAAAARAP3/AAALAAQAAAAJAPv/AAAAAAQAAAAIAPz/AAAAAAQAAAAJAPz/AAAAAAQAAAALAPz/AAAAAAQAAAAKAPz/AAAAAAQAAAAKAPj/AAACAAEAAAALAPj/AAAHAAEAAAAMAPj/AAACAAEAAAANAPj/AAAIAAEAAAANAPn/AAAIAAMAAAAMAPn/AAAAAAQAAAALAPn/AAABAAQAAAAKAPn/AAABAAQAAAAKAPr/AAAAAAQAAAALAPr/AAABAAQAAAAKAPv/AAAAAAQAAAALAPv/AAABAAQAAAAMAPv/AAABAAQAAAAMAPr/AAAAAAQAAAANAPr/AAAAAAQAAAANAPv/AAABAAQAAAAMAPz/AAAAAAQAAAANAPz/AAAAAAQAAAAOAPz/AAAAAAQAAAAPAPz/AAAAAAQAAAAQAPz/AAAAAAQAAAARAPz/AAALAAQAAAARAPv/AAALAAQAAAAQAPv/AAAAAAQAAAAPAPv/AAAAAAQAAAAOAPv/AAAAAAQAAAAOAPj/AAAEAAMAAAAPAPj/AAAEAAMAAAAQAPj/AAAJAAEAAAARAPj/AAALAAQAAAARAPf/AAALAAQAAAARAPb/AAALAAQAAAARAPX/AAALAAQAAAARAPT/AAALAAQAAAARAPP/AAALAAQAAAARAPn/AAALAAQAAAARAPr/AAALAAQAAAAQAPn/AAADAAQAAAAQAPr/AAAAAAQAAAAPAPn/AAAAAAQAAAAPAPr/AAAAAAQAAAAOAPn/AAAAAAQAAAAOAPr/AAAAAAQAAAAEAPf/AAAAAAQAAAAFAPf/AAAAAAQAAAADAPf/AAAAAAQAAAAEAPz/AAAGAAMAAAACAPz/AAABAAQAAAAAAPf/AAAAAAQAAAD///f/AAAAAAQAAAAGAPz/AAAGAAMAAAAGAP3/AAAAAAQAAAAGAPv/AAAAAAQAAAAFAPz/AAAGAAMAAAADAPz/AAAAAAQAAAABAPz/AAAGAAMAAAAAAPz/AAAAAAQAAAD///z/AAAAAAQAAAADAP3/AAABAAQAAAAEAP3/AAAAAAQAAAAFAP3/AAAAAAQAAAAHAP7/AAAAAAQAAAAIAP7/AAAAAAQAAAAGAP7/AAAAAAQAAAACAP3/AAABAAQAAAABAP3/AAAAAAQAAAAAAP3/AAAAAAQAAAD///3/AAAAAAQAAAD+//3/AAAAAAQAAAD+//z/AAAAAAQAAAD+//7/AAAAAAQAAAD///7/AAAAAAQAAAAAAP7/AAAAAAQAAAABAP7/AAAAAAQAAAACAP7/AAAAAAQAAAADAP7/AAABAAQAAAAEAP7/AAAAAAQAAAAFAP7/AAAAAAQAAAD9//7/AAAJAAQAAAD9//3/AAAJAAQAAAD9//z/AAAJAAQAAAD9//v/AAAJAAQAAAD9//r/AAAJAAQAAAD9//n/AAAJAAQAAAD9//j/AAAJAAQAAAD9//f/AAAJAAQAAAD+//f/AAAAAAQAAAABAPf/AAAAAAQAAAACAPf/AAAAAAQAAAAGAPf/AAAAAAQAAAAHAPf/AAABAAQAAAAIAPf/AAABAAQAAAAJAPf/AAAAAAQAAAAQAPb/AAAGAAMAAAAQAPX/AAAAAAQAAAAQAPT/AAAAAAQAAAAQAPP/AAAAAAQAAAAQAPf/AAAGAAMAAAAPAPf/AAABAAQAAAAOAPf/AAABAAQAAAANAPf/AAABAAQAAAAMAPf/AAAAAAQAAAALAPf/AAAAAAQAAAAKAPf/AAAAAAQAAAAKAPb/AAAAAAQAAAAKAPX/AAAAAAQAAAAKAPT/AAAGAAMAAAALAPT/AAAGAAMAAAALAPP/AAABAAQAAAAMAPP/AAAAAAQAAAAMAPL/AAAAAAQAAAANAPL/AAAAAAQAAAAOAPL/AAAAAAQAAAAOAPP/AAAAAAQAAAAOAPT/AAAAAAQAAAANAPT/AAAGAAMAAAANAPX/AAAGAAMAAAAMAPX/AAAAAAQAAAAMAPT/AAAGAAMAAAANAPP/AAAGAAMAAAAPAPP/AAAAAAQAAAAPAPT/AAABAAQAAAAPAPX/AAABAAQAAAAOAPb/AAAGAAMAAAANAPb/AAAGAAMAAAAOAPX/AAAAAAQAAAAPAPb/AAAGAAMAAAALAPX/AAAAAAQAAAALAPb/AAAAAAQAAAAMAPb/AAAAAAQAAAAQAPL/AAAAAAQAAAAPAPL/AAAAAAQAAAALAPL/AAAAAAQAAAAKAPL/AAABAAQAAAAJAPL/AAAAAAQAAAAJAPP/AAAAAAQAAAAIAPP/AAAAAAQAAAAIAPT/AAAAAAQAAAAJAPT/AAAGAAMAAAAKAPP/AAABAAQAAAAJAPb/AAAAAAQAAAAIAPb/AAABAAQAAAAHAPX/AAAAAAQAAAAIAPX/AAAAAAQAAAAJAPX/AAAAAAQAAAAHAPb/AAABAAQAAAAGAPb/AAABAAQAAAD9//b/AAAJAAQAAAD9//X/AAAJAAQAAAD9//T/AAAJAAQAAAD9//P/AAAJAAQAAAD9//L/AAAJAAQAAAA=")
+tile_set = ExtResource("6_choun")
+
+[node name="LayerDecoration" type="TileMapLayer" parent="Map/WFC2DLayeredMapSample" unique_id=941647304]
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAJAP3/AAAHAAYAAAAKAP3/AAAKAAUAAAALAP3/AAAKAAUAAAAMAP3/AAAKAAUAAAANAP3/AAAIAAYAAAAIAP3/AAAGAAQAAAAIAPn/AAAFAAcAAAA=")
+tile_set = ExtResource("7_ya4ey")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=925641475]
+
+[node name="roamerEnemy" parent="Enemies" unique_id=549486802 instance=ExtResource("4_tbgi4")]
 position = Vector2(477, 228)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
 
 [node name="UI" parent="UILayer" unique_id=87986574 instance=ExtResource("2_0wfyh")]
+
+[node name="Player" parent="." unique_id=59921298 instance=ExtResource("1_o5qli")]
+position = Vector2(424, 148)
+collision_mask = 13

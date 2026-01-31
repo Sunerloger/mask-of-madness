@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ctsowb5amp6ey"
+path="res://.godot/imported/bridge_wood.obj-1349b919c7b186d9aa4bf7c8ff1ca35c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bridge_wood.obj-1349b919c7b186d9aa4bf7c8ff1ca35c.mesh"]
+
+source_file="res://addons/wfc/examples/assets/kenny-nature-kit/obj/bridge_wood.obj"
+dest_files=["res://.godot/imported/bridge_wood.obj-1349b919c7b186d9aa4bf7c8ff1ca35c.mesh", "res://.godot/imported/bridge_wood.obj-1349b919c7b186d9aa4bf7c8ff1ca35c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
