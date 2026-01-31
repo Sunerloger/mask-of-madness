@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://bpc3oybuv2klf"]
 
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_3dtr5"]
-[ext_resource type="Texture2D" uid="uid://bn2g1egny6kfi" path="res://assets/sprites/tilemap_deco_elements.png" id="1_oghin"]
-[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/wall_tileset.tres" id="2_fvopn"]
+[ext_resource type="Texture2D" uid="uid://kyorgtykxdwg" path="res://assets/tilemap/tilemap_deco_elements.png" id="1_oghin"]
+[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="2_fvopn"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kw7gq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oghin"]
 texture = ExtResource("1_oghin")
 texture_region_size = Vector2i(180, 180)
 0:0/0 = 0
@@ -110,23 +110,23 @@ texture_region_size = Vector2i(180, 180)
 
 [sub_resource type="TileSet" id="TileSet_botln"]
 tile_size = Vector2i(180, 180)
-sources/0 = SubResource("TileSetAtlasSource_kw7gq")
+sources/0 = SubResource("TileSetAtlasSource_oghin")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fvopn"]
 blend_mode = 2
 
-[sub_resource type="Gradient" id="Gradient_onrkg"]
+[sub_resource type="Gradient" id="Gradient_kw7gq"]
 offsets = PackedFloat32Array(0, 0.36363637)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_oghin"]
-gradient = SubResource("Gradient_onrkg")
+gradient = SubResource("Gradient_kw7gq")
 width = 1600
 height = 1000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oghin"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_botln"]
 texture = ExtResource("1_oghin")
 texture_region_size = Vector2i(180, 180)
 0:0/0 = 0
@@ -169,7 +169,7 @@ texture_region_size = Vector2i(180, 180)
 
 [sub_resource type="TileSet" id="TileSet_kw7gq"]
 tile_size = Vector2i(180, 180)
-sources/0 = SubResource("TileSetAtlasSource_oghin")
+sources/0 = SubResource("TileSetAtlasSource_botln")
 
 [node name="PlayerMovTest" type="Node2D" unique_id=842354049]
 
@@ -206,7 +206,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 position = Vector2(204, 207)
 
-[node name="Camera2D" type="Camera2D" parent="all_ysorted_objects/ysort/Player" unique_id=428844168]
+[node name="Camera2D2" type="Camera2D" parent="all_ysorted_objects/ysort/Player" unique_id=428844168]
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="all_ysorted_objects/ysort/Player" unique_id=576218188]
 remote_path = NodePath("../../../ysorted_mask")

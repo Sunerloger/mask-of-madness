@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" path="res://assets/scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bhjnjkxtqu12" path="res://scenes/ui.tscn" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://kyorgtykxdwg" path="res://assets/tilemap/tilemap_deco_elements.png" id="2_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://daj7u563usssc" path="res://scenes/roamerEnemy.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://chut5yo1rjwj0" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://6w5huv2jvyje" path="res://scenes/levelExit.tscn" id="6_tefeu"]
@@ -10,16 +11,243 @@
 [ext_resource type="PackedScene" uid="uid://cc5wo2i3x01fc" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
 [ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="9_85g3d"]
 [ext_resource type="Shader" uid="uid://2wf1mrrl3qs8" path="res://shaders/post_processing_effects/canvas_item/wobble_shader.gdshader" id="10_choun"]
+[ext_resource type="Script" uid="uid://8664ji0a8snp" path="res://assets/scripts/sanity_modifier.gd" id="10_ya4ey"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_choun"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trceg"]
+texture = ExtResource("2_eb6dy")
+texture_region_size = Vector2i(180, 180)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_a8y0u"]
+tile_size = Vector2i(180, 180)
+sources/0 = SubResource("TileSetAtlasSource_trceg")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jkv2x"]
 blend_mode = 2
 
 [sub_resource type="Gradient" id="Gradient_onrkg"]
 offsets = PackedFloat32Array(0, 0.36363637)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ya4ey"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jbj1t"]
 gradient = SubResource("Gradient_onrkg")
+width = 1600
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
+texture = ExtResource("2_eb6dy")
+texture_region_size = Vector2i(180, 180)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_trceg"]
+tile_size = Vector2i(180, 180)
+sources/0 = SubResource("TileSetAtlasSource_eb6dy")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_choun"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_muem4"]
+offsets = PackedFloat32Array(0, 0.36363637)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ya4ey"]
+gradient = SubResource("Gradient_muem4")
+width = 1600
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
+texture = ExtResource("2_eb6dy")
+texture_region_size = Vector2i(180, 180)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jkv2x"]
+tile_size = Vector2i(180, 180)
+sources/0 = SubResource("TileSetAtlasSource_a8y0u")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jbj1t"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_dp3eg"]
+offsets = PackedFloat32Array(0, 0.36363637)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ld40"]
+gradient = SubResource("Gradient_dp3eg")
 width = 1600
 height = 1000
 fill = 1
@@ -39,21 +267,34 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ya4ey")
 [node name="Main" type="Node2D" unique_id=1351415594]
 script = ExtResource("1_sugp2")
 
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1456118586]
+position = Vector2(171.2727, 187.56628)
+scale = Vector2(2.9301312, 2.9301312)
+color = Color(0.58, 0.58, 0.58, 1)
+polygon = PackedVector2Array(-2665, -1655.7893, -2679, 1918, 3230, 1893, 3223, -1635)
+
+[node name="all_background_objects" type="CanvasGroup" parent="." unique_id=1691768199]
+
+[node name="TileMapLayer_large_floor_deco" type="TileMapLayer" parent="all_background_objects" unique_id=1571415591]
+tile_map_data = PackedByteArray("AAD+////AAAJAAYAAAD+/wAAAAAJAAcAAAD/////AAAGAAgAAAD//wAAAAAGAAkAAAACAP7/AAAJAAcAAAAAAAIAAAABAAQAAAACAP//AAAJAAgAAAD///3/AAAGAAYAAAD9//v/AAAEAAYAAAD8//7/AAADAAkAAAABAAMAAAAAAAcAAAADAAEAAAAEAAIAAAABAP//AAAIAAgAAAAEAP7/AAACAAAAAAADAP3/AAACAAAAAAAAAP3/AAAHAAYAAAAAAP7/AAAHAAcAAAD+//7/AAAFAAkAAAD///z/AAABAAAAAAD+//z/AAAFAAcAAAAFAPz/AAABAAkAAAAHAP//AAAIAAMAAAALAP3/AAAIAAYAAAAHAAEAAAAIAAUAAAAGAAAAAAAHAAQAAAAFAAAAAAAGAAQAAAAEAAEAAAACAAAAAAADAAMAAAACAAcAAAD+/wIAAAAJAAkAAAD8/wEAAAAHAAgAAAD8/wAAAAAHAAcAAAD7/wQAAAAHAAIAAAACAAQAAAABAAgAAAAFAAQAAAAEAAgAAAD6////AAAAAAEAAAAGAP7/AAAHAAIAAAACAP3/AAAJAAYAAAABAPv/AAAHAAQAAAD9/wUAAAAJAAMAAAABAAIAAAAAAAYAAAABAAQAAAAAAAgAAAABAAUAAAAAAAkAAAACAAIAAAABAAYAAAACAAMAAAABAAcAAAACAAUAAAABAAkAAAADAAIAAAACAAYAAAADAAQAAAACAAgAAAADAAUAAAACAAkAAAAEAAIAAAADAAYAAAAEAAMAAAADAAcAAAAEAAQAAAADAAgAAAAFAAIAAAAEAAYAAAAFAAMAAAAEAAcAAAAFAAUAAAAEAAkAAAAGAAIAAAAFAAYAAAAGAAMAAAAFAAcAAAAGAAQAAAAFAAgAAAAGAAUAAAAFAAkAAAD5//v/AAAAAAYAAAD5//z/AAAAAAcAAAD5//3/AAAAAAgAAAD5//7/AAAAAAkAAAD6//v/AAABAAYAAAD6//z/AAABAAcAAAD6//3/AAABAAgAAAD6//7/AAABAAkAAAD7//v/AAACAAYAAAD7//z/AAACAAcAAAD7//3/AAACAAgAAAD7//7/AAACAAkAAAD8//v/AAADAAYAAAD8//z/AAADAAcAAAD8//3/AAADAAgAAAD9//z/AAAEAAcAAAD9//3/AAAEAAgAAAD9//7/AAAEAAkAAAD+//v/AAAFAAYAAAD+//3/AAAFAAgAAAAEAPn/AAAAAAYAAAAEAPr/AAAAAAcAAAAEAPv/AAAAAAgAAAAEAPz/AAAAAAkAAAAFAPn/AAABAAYAAAAFAPr/AAABAAcAAAAFAPv/AAABAAgAAAAGAPn/AAACAAYAAAAGAPr/AAACAAcAAAAGAPv/AAACAAgAAAAGAPz/AAACAAkAAAAHAPn/AAADAAYAAAAHAPr/AAADAAcAAAAHAPv/AAADAAgAAAAHAPz/AAADAAkAAAAIAPn/AAAEAAYAAAAIAPr/AAAEAAcAAAAIAPv/AAAEAAgAAAAIAPz/AAAEAAkAAAAJAPn/AAAFAAYAAAAJAPr/AAAFAAcAAAAJAPv/AAAFAAgAAAAJAPz/AAAFAAkAAAD///7/AAAGAAcAAAAAAP//AAAHAAgAAAAAAAAAAAAHAAkAAAABAP3/AAAIAAYAAAABAP7/AAAIAAcAAAABAAAAAAAIAAkAAAACAAAAAAAJAAkAAAD7////AAAGAAYAAAD7/wAAAAAGAAcAAAD7/wEAAAAGAAgAAAD7/wIAAAAGAAkAAAD8////AAAHAAYAAAD8/wIAAAAHAAkAAAD9////AAAIAAYAAAD9/wAAAAAIAAcAAAD9/wEAAAAIAAgAAAD9/wIAAAAIAAkAAAD+/wEAAAAJAAgAAAAJAP3/AAAGAAYAAAAJAP7/AAAGAAcAAAAJAP//AAAGAAgAAAAJAAAAAAAGAAkAAAAKAP3/AAAHAAYAAAAKAP7/AAAHAAcAAAAKAP//AAAHAAgAAAAKAAAAAAAHAAkAAAALAP7/AAAIAAcAAAALAP//AAAIAAgAAAALAAAAAAAIAAkAAAAMAP3/AAAJAAYAAAAMAP7/AAAJAAcAAAAMAP//AAAJAAgAAAAMAAAAAAAJAAkAAAAIAAEAAAAJAAUAAAAIAAIAAAAGAAIAAAAIAAMAAAAGAAMAAAAIAAQAAAAGAAQAAAAIAAUAAAAGAAUAAAAJAAEAAAAHAAEAAAAJAAIAAAAHAAIAAAAJAAMAAAAHAAMAAAAJAAQAAAAHAAQAAAAJAAUAAAAHAAUAAAAKAAEAAAAIAAEAAAAKAAIAAAAIAAIAAAAKAAMAAAAIAAMAAAAKAAQAAAAIAAQAAAAKAAUAAAAIAAUAAAALAAEAAAAJAAEAAAALAAIAAAAJAAIAAAALAAMAAAAJAAMAAAALAAQAAAAJAAQAAAALAAUAAAAJAAUAAAD6/wMAAAAGAAEAAAD6/wQAAAAGAAIAAAD6/wUAAAAGAAMAAAD6/wYAAAAGAAQAAAD6/wcAAAAGAAUAAAD7/wMAAAAHAAEAAAD7/wUAAAAHAAMAAAD7/wYAAAAHAAQAAAD7/wcAAAAHAAUAAAD8/wMAAAAIAAEAAAD8/wQAAAAIAAIAAAD8/wYAAAAIAAQAAAD8/wcAAAAIAAUAAAD9/wMAAAAJAAEAAAD9/wQAAAAJAAIAAAD9/wYAAAAJAAQAAAD9/wcAAAAJAAUAAAAAAPj/AAAGAAEAAAAAAPn/AAAGAAIAAAAAAPr/AAAGAAMAAAAAAPv/AAAGAAQAAAAAAPz/AAAGAAUAAAABAPj/AAAHAAEAAAABAPn/AAAHAAIAAAABAPr/AAAHAAMAAAABAPz/AAAHAAUAAAACAPj/AAAIAAEAAAACAPn/AAAIAAIAAAACAPr/AAAIAAMAAAACAPv/AAAIAAQAAAACAPz/AAAIAAUAAAADAPj/AAAJAAEAAAADAPn/AAAJAAIAAAADAPr/AAAJAAMAAAADAPv/AAAJAAQAAAADAPz/AAAJAAUAAAAKAPj/AAAGAAEAAAAKAPn/AAAGAAIAAAAKAPr/AAAGAAMAAAAKAPv/AAAGAAQAAAAKAPz/AAAGAAUAAAALAPj/AAAHAAEAAAALAPn/AAAHAAIAAAALAPr/AAAHAAMAAAALAPv/AAAHAAQAAAALAPz/AAAHAAUAAAAMAPj/AAAIAAEAAAAMAPn/AAAIAAIAAAAMAPr/AAAIAAMAAAAMAPv/AAAIAAQAAAAMAPz/AAAIAAUAAAANAPj/AAAJAAEAAAANAPn/AAAJAAIAAAANAPr/AAAJAAMAAAANAPv/AAAJAAQAAAANAPz/AAAJAAUAAAAFAP7/AAAGAAIAAAAFAP//AAAGAAMAAAAFAAEAAAAGAAUAAAAGAP3/AAAHAAEAAAAGAP//AAAHAAMAAAAGAAEAAAAHAAUAAAAHAP3/AAAIAAEAAAAHAP7/AAAIAAIAAAAHAAAAAAAIAAQAAAAIAP3/AAAJAAEAAAAIAP7/AAAJAAIAAAAIAP//AAAJAAMAAAAIAAAAAAAJAAQAAAD8//b/AAAGAAEAAAD8//f/AAAGAAIAAAD8//j/AAAGAAMAAAD8//n/AAAGAAQAAAD8//r/AAAGAAUAAAD9//b/AAAHAAEAAAD9//f/AAAHAAIAAAD9//j/AAAHAAMAAAD9//n/AAAHAAQAAAD9//r/AAAHAAUAAAD+//b/AAAIAAEAAAD+//f/AAAIAAIAAAD+//j/AAAIAAMAAAD+//n/AAAIAAQAAAD+//r/AAAIAAUAAAD///b/AAAJAAEAAAD///f/AAAJAAIAAAD///j/AAAJAAMAAAD///n/AAAJAAQAAAD///r/AAAJAAUAAAD8/wUAAAAIAAMAAAAIAPX/AAABAAcAAAA=")
+tile_set = SubResource("TileSet_a8y0u")
+
+[node name="TileMapLayer_small_floor_deco" type="TileMapLayer" parent="all_background_objects" unique_id=1885267623]
+modulate = Color(1, 1, 1, 0.5019608)
+tile_map_data = PackedByteArray("AAD//wAAAAABAAQAAAAAAAIAAAABAAQAAAACAP//AAABAAQAAAD///3/AAABAAQAAAD9//v/AAABAAQAAAD8//7/AAAEAAIAAAABAAMAAAAEAAIAAAADAAEAAAAEAAIAAAADAAAAAAADAAEAAAABAP//AAACAAEAAAAEAP7/AAACAAAAAAADAP3/AAACAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAACAAAAAAD+//7/AAABAAAAAAD///z/AAABAAAAAAD+//z/AAABAAAAAAAFAPz/AAAEAAAAAAAHAP//AAAEAAAAAAAHAAEAAAAEAAEAAAAGAAAAAAAEAAEAAAAFAAAAAAABAAAAAAAEAAEAAAACAAAAAAADAAMAAAACAAAAAAD+/wIAAAACAAEAAAD8/wAAAAAEAAEAAAD7/wQAAAAAAAEAAAD8/wUAAAABAAEAAAABAAYAAAADAAEAAAAEAAUAAAADAAEAAAD//wQAAAAGAAEAAAACAAQAAAAHAAEAAAAHAAMAAAADAAEAAAAFAAQAAAAFAAAAAAD6////AAAAAAEAAAAGAP7/AAAAAAEAAAACAP3/AAAAAAEAAAABAPv/AAAAAAEAAAD9/wUAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_a8y0u")
+
+[node name="bg_objects_mask" type="Sprite2D" parent="all_background_objects" unique_id=1667924969]
+material = SubResource("CanvasItemMaterial_jkv2x")
+position = Vector2(424, 148)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_jbj1t")
+
 [node name="Enemies" type="Node2D" parent="." unique_id=1999643480]
 position = Vector2(905, 501)
 
 [node name="roamerEnemy" parent="Enemies" unique_id=549486802 instance=ExtResource("4_tbgi4")]
 position = Vector2(-428, -273)
-
-[node name="Player" parent="." unique_id=59921298 instance=ExtResource("1_o5qli")]
-position = Vector2(424, 148)
-
-[node name="Camera2D2" type="Camera2D" parent="Player" unique_id=998235544]
-
-[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Player" unique_id=56947811]
-remote_path = NodePath("../../CanvasGroup/mask")
-update_rotation = false
-update_scale = false
 
 [node name="levelExit" parent="." unique_id=1685547513 instance=ExtResource("6_tefeu")]
 position = Vector2(1024, 366)
@@ -77,22 +318,62 @@ tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAACAAIAAAAAAAMAAAABAAQAAAADAAM
 tile_set = ExtResource("9_85g3d")
 y_sort_origin = 200
 
+[node name="TileMapLayer_wall_enhancements" type="TileMapLayer" parent="CanvasGroup" unique_id=552158586]
+position = Vector2(0, 40)
+tile_map_data = PackedByteArray("AAD//wAAAAACAAQAAAD//wEAAAACAAUAAAD9/wIAAAADAAIAAAD9/wMAAAADAAMAAAAFAP//AAAEAAMAAAD+/wIAAAAFAAIAAAD+/wMAAAAFAAMAAAD7/wAAAAAFAAIAAAD7/wEAAAAFAAMAAAABAAQAAAAFAAUAAAD6/wEAAAAEAAUAAAAAAPz/AAAEAAUAAAD9////AAADAAUAAAD5//3/AAACAAIAAAD5//7/AAACAAMAAAAEAP7/AAACAAIAAAAEAP//AAACAAMAAAACAAIAAAADAAUAAAADAPv/AAACAAQAAAADAPz/AAACAAUAAAD5/wEAAAAEAAMAAAAJAAEAAAAEAAMAAAAIAP3/AAADAAIAAAAIAP7/AAADAAMAAAD9//z/AAADAAIAAAD9//3/AAADAAMAAAA=")
+tile_set = SubResource("TileSet_trceg")
+
 [node name="mask" type="Sprite2D" parent="CanvasGroup" unique_id=108153130]
 material = SubResource("CanvasItemMaterial_choun")
 position = Vector2(424, 148)
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_ya4ey")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1456118586]
-z_index = -1
-position = Vector2(171.2727, 187.56628)
-scale = Vector2(2.9301312, 2.9301312)
-color = Color(0.58, 0.58, 0.58, 1)
-polygon = PackedVector2Array(-2665, -1655.7893, -2679, 1918, 3230, 1893, 3223, -1635)
+[node name="ysort" type="Node2D" parent="CanvasGroup" unique_id=577126407]
+y_sort_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=969062095]
+[node name="Player" parent="CanvasGroup/ysort" unique_id=59921298 instance=ExtResource("1_o5qli")]
+position = Vector2(424, 148)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2147157223]
+[node name="Camera2D2" type="Camera2D" parent="CanvasGroup/ysort/Player" unique_id=998235544]
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="CanvasGroup/ysort/Player" unique_id=56947811]
+remote_path = NodePath("../../../../all_background_objects/bg_objects_mask")
+update_rotation = false
+update_scale = false
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="CanvasGroup/ysort/Player" unique_id=1871890603]
+remote_path = NodePath("../../../ysorted_mask")
+update_rotation = false
+update_scale = false
+
+[node name="TileMapLayer_walls" type="TileMapLayer" parent="CanvasGroup/ysort" unique_id=1445987226]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAACAAIAAAAAAAMAAAABAAQAAAADAAMAAAAIAAEAAAABAAIAAAAFAP//AAADAAMAAAAEAP//AAABAAMAAAABAP7/AAAAAAMAAAD//wEAAAAAAAMAAAD8/wIAAAAAAAAAAAD8/wMAAAABAAIAAAD9/wMAAAACAAMAAAD+/wMAAAADAAMAAAAAAAQAAAABAAMAAAD+//3/AAADAAMAAAD9//3/AAABAAAAAAD9//7/AAAAAAEAAAD9////AAAAAAIAAAAIAP7/AAABAAIAAAAJAP7/AAADAAMAAAAKAAEAAAACAAMAAAALAAIAAAAAAAIAAAALAAEAAAADAAAAAAAJAAEAAAACAAMAAAAIAAAAAAAAAAAAAAAFAAMAAAAAAAIAAAAIAAMAAAAAAAAAAAAIAAQAAAABAAIAAAAJAAQAAAADAAMAAAAEAAQAAAAAAAMAAAALAP//AAAAAAMAAAD6/wQAAAAAAAEAAAD6/wUAAAAAAAIAAAD5/wMAAAABAAMAAAD6/wMAAAADAAAAAAD7//3/AAAAAAMAAAADAPz/AAAAAAMAAAAEAP3/AAABAAMAAAAFAP3/AAADAAMAAAABAPz/AAADAAMAAAAAAPz/AAABAAMAAAAMAP3/AAAAAAMAAAANAP//AAAAAAAAAAANAAAAAAAAAAIAAAAMAAQAAAAAAAMAAAD6//7/AAADAAMAAAD5//7/AAABAAMAAAD4/wEAAAACAAMAAAD5/wEAAAACAAMAAAD6/wEAAAACAAMAAAD7/wEAAAADAAIAAAD3/wEAAAABAAMAAAD7/wAAAAAAAAEAAAD7////AAAAAAAAAAAIAP3/AAAAAAAAAAA=")
+tile_set = ExtResource("9_85g3d")
+
+[node name="TileMapLayer_wall_enhancements2" type="TileMapLayer" parent="CanvasGroup/ysort" unique_id=435089335]
+position = Vector2(0, 40)
+tile_map_data = PackedByteArray("AAD//wAAAAACAAQAAAD//wEAAAACAAUAAAD9/wIAAAADAAIAAAD9/wMAAAADAAMAAAAFAP//AAAEAAMAAAD+/wIAAAAFAAIAAAD+/wMAAAAFAAMAAAD7/wAAAAAFAAIAAAD7/wEAAAAFAAMAAAABAAQAAAAFAAUAAAD6/wEAAAAEAAUAAAAAAPz/AAAEAAUAAAD9////AAADAAUAAAD5//3/AAACAAIAAAD5//7/AAACAAMAAAAEAP7/AAACAAIAAAAEAP//AAACAAMAAAACAAIAAAADAAUAAAADAPv/AAACAAQAAAADAPz/AAACAAUAAAD5/wEAAAAEAAMAAAAJAAEAAAAEAAMAAAAIAP3/AAADAAIAAAAIAP7/AAADAAMAAAD9//z/AAADAAIAAAD9//3/AAADAAMAAAD2//7/AAADAAUAAADy//v/AAAEAAUAAADt//f/AAAEAAUAAAD2//X/AAAEAAUAAAA=")
+tile_set = SubResource("TileSet_jkv2x")
+
+[node name="ysorted_mask" type="Sprite2D" parent="CanvasGroup" unique_id=1613369799]
+visible = false
+material = SubResource("CanvasItemMaterial_jbj1t")
+position = Vector2(424, 148)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_0ld40")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
+
+[node name="UI" parent="UILayer" unique_id=87986574 instance=ExtResource("2_0wfyh")]
+
+[node name="SanityModifier" type="Node2D" parent="." unique_id=736974104]
+script = ExtResource("10_ya4ey")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SanityModifier" unique_id=969062095]
+
+[node name="ColorRect" type="ColorRect" parent="SanityModifier/CanvasLayer" unique_id=2147157223]
 visible = false
 material = SubResource("ShaderMaterial_choun")
 offset_left = -34.0
@@ -101,6 +382,4 @@ offset_right = 6.0
 offset_bottom = 37.0
 scale = Vector2(47.999996, 27)
 
-[node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
-
-[node name="UI" parent="UILayer" unique_id=87986574 instance=ExtResource("2_0wfyh")]
+[node name="CanvasModulate" type="CanvasModulate" parent="SanityModifier" unique_id=1585395005]
