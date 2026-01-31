@@ -1,0 +1,7 @@
+extends Node
+
+signal OnCurrentSanityChange
+signal OnMaxSanityChange
+
+signal OnCurrentHealthChange
+signal OnMaxHealthChange

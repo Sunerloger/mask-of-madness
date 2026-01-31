@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://ckoglvcvqgaqs"]
 
-[ext_resource type="Script" uid="uid://dmaedpif5w0s3" path="res://assets/scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dy1qlq0pot8ds" path="res://assets/sprites/temp_player.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://jkjfp3je2rev" path="res://assets/new_gradient_texture_2d.tres" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://8wqx3vp0usx3" path="res://assets/scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://assets/scripts/sanity.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 34.132095
@@ -10,7 +12,8 @@ radius = 34.132095
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g2els"]
 polygon = PackedVector2Array(-7, 0, -7, -4, -4, -8, 1, -9, 381, -103.39622, -143, -99.622635, -141, 103.39622, 387, 117.73584, 1, 7, -4, 5, -7, 2)
 
-[node name="Player" type="CharacterBody2D" unique_id=68192137]
+[node name="Player" type="CharacterBody2D" unique_id=68192137 groups=["player"]]
+
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086097468]
@@ -34,3 +37,14 @@ occluder = SubResource("OccluderPolygon2D_g2els")
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1658004506]
 scale = Vector2(0.115, 0.115)
 texture = ExtResource("3_qhqgy")
+
+[node name="Sanity" type="Node2D" parent="." unique_id=585991065]
+script = ExtResource("3_qhqgy")
+
+[node name="Timer" type="Timer" parent="Sanity" unique_id=910753701]
+autostart = true
+
+[node name="Health" type="Node2D" parent="." unique_id=1079864545]
+script = ExtResource("4_dqkch")
+
+[connection signal="timeout" from="Sanity/Timer" to="Sanity" method="_on_timer_timeout"]

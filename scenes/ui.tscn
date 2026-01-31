@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bhjnjkxtqu12"]
+
+[ext_resource type="Script" uid="uid://co2otlmsne3pf" path="res://assets/scripts/sanity_bar.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://c8ogi3fq4tje3" path="res://assets/scripts/health_bar.gd" id="2_x4jx1"]
+
+[node name="UI" type="Control" unique_id=87986574]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="SanityBar" type="ProgressBar" parent="." unique_id=229974149]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 114.0
+offset_right = 56.0
+offset_bottom = 444.0
+theme_override_colors/font_color = Color(14.948135, 18.892157, 18.892157, 1)
+value = 100.0
+fill_mode = 3
+script = ExtResource("1_nt7q6")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1637838547]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 30.0
+offset_right = 945.0
+offset_bottom = 68.0
+value = 100.0
+script = ExtResource("2_x4jx1")

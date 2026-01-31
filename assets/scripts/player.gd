@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 @onready var occluder := $PointLight2D/LightOccluder2D
 
