@@ -7,7 +7,7 @@ extends Node2D
 func _process(delta: float) -> void:
 	var sanity = player.sanity._current_sanity
 	
-	var brightness := remap(sanity, 0, 100, 0.5, 1)
-	
+	var brightness := remap(sanity, 0, 100, 0.2, 1)
+	var wobbleIntensity := remap(sanity, 0, 100, 40, 500)
+	wobbleLayer.material.set_shader_parameter("intensity", wobbleIntensity)
 	darkenLayer.color = Color(brightness, brightness, brightness)
-	return

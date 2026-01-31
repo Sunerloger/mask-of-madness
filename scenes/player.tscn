@@ -27,6 +27,15 @@ offset = Vector2(0, -60)
 flip_h = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1077787437]
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = ExtResource("3_tuyoq")
+offset = Vector2(900, 0)
+texture_scale = 0.8
+
+[node name="PointLight2D" type="PointLight2D" parent="PointLight2D" unique_id=92554038]
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 2.0
