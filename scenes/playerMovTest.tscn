@@ -1,37 +1,29 @@
-[gd_scene format=3 uid="uid://bpc3oybuv2klf"]
+[gd_scene format=4 uid="uid://bpc3oybuv2klf"]
 
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_3dtr5"]
-[ext_resource type="PackedScene" uid="uid://d0cck7d0rr4n6" path="res://scenes/roamerEnemey.tscn" id="2_fvopn"]
-[ext_resource type="PackedScene" uid="uid://6w5huv2jvyje" path="res://scenes/levelExit.tscn" id="3_oghin"]
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3dtr5"]
-polygon = PackedVector2Array(614, 216, 779, 216, 779, 349, 614, 349)
+[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/wall_tileset.tres" id="2_fvopn"]
 
 [node name="PlayerMovTest" type="Node2D" unique_id=842354049]
+y_sort_enabled = true
 
 [node name="Player" parent="." unique_id=68192137 instance=ExtResource("1_3dtr5")]
+y_sort_enabled = true
 position = Vector2(204, 207)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=428844168]
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=643584224]
 z_index = -1
-position = Vector2(317.99997, 346)
-scale = Vector2(1.6990831, 1.6990831)
-color = Color(0.21229082, 0.124217756, 0.058720484, 1)
-polygon = PackedVector2Array(-204, -207, -204, 439, 948, 441, 950, -207)
+position = Vector2(204, 207)
+color = Color(0.58, 0.58, 0.58, 1)
+polygon = PackedVector2Array(-1915, -1576, -2594, 1793, 3144, 1893, 3161, -1482)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=727007295]
+visible = false
 color = Color(0, 0, 0, 1)
 
-[node name="Box" type="Polygon2D" parent="." unique_id=1344022613]
-polygon = PackedVector2Array(617, 216, 779, 216, 779, 349, 614, 349)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Box" unique_id=920650337]
-z_index = -2
-occluder = SubResource("OccluderPolygon2D_3dtr5")
-
-[node name="roamerEnemy" parent="." unique_id=549486802 instance=ExtResource("2_fvopn")]
-position = Vector2(477, 228)
-
-[node name="levelExit" parent="." unique_id=1685547513 instance=ExtResource("3_oghin")]
-position = Vector2(1816, 739)
-scale = Vector2(4.3200016, 4.3200016)
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1395126079]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAACAAIAAAAAAAMAAAABAAQAAAADAAMAAAAIAAEAAAABAAIAAAAFAP//AAADAAMAAAAEAP//AAABAAMAAAABAP7/AAAAAAMAAAD//wEAAAAAAAMAAAD8/wIAAAAAAAAAAAD8/wMAAAABAAIAAAD9/wMAAAACAAMAAAD+/wMAAAADAAMAAAAAAAQAAAABAAMAAAD+//3/AAADAAMAAAD9//3/AAABAAAAAAD9//7/AAAAAAEAAAD9////AAAAAAIAAAAIAP7/AAABAAIAAAAJAP7/AAADAAMAAAAKAAEAAAACAAMAAAALAAIAAAAAAAIAAAALAAEAAAADAAAAAAAJAAEAAAACAAMAAAAIAAAAAAAAAAAAAAAFAAMAAAAAAAIAAAAIAAMAAAAAAAAAAAAIAAQAAAABAAIAAAAJAAQAAAADAAMAAAAEAAQAAAAAAAMAAAALAP//AAAAAAMAAAD6/wQAAAAAAAEAAAD6/wUAAAAAAAIAAAD5/wMAAAABAAMAAAD6/wMAAAADAAAAAAD7//3/AAAAAAMAAAADAPz/AAAAAAMAAAAEAP3/AAABAAMAAAAFAP3/AAADAAMAAAABAPz/AAADAAMAAAAAAPz/AAABAAMAAAAMAP3/AAAAAAMAAAANAP//AAAAAAAAAAANAAAAAAAAAAIAAAAMAAQAAAAAAAMAAAD6//7/AAADAAMAAAD5//7/AAABAAMAAAD4/wEAAAACAAMAAAD5/wEAAAACAAMAAAD6/wEAAAACAAMAAAD7/wEAAAADAAIAAAD3/wEAAAABAAMAAAD7/wAAAAAAAAEAAAD7////AAAAAAAAAAAIAP3/AAAAAAAAAAA=")
+tile_set = ExtResource("2_fvopn")
+y_sort_origin = 200
