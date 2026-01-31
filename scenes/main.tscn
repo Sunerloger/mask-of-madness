@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d4jfoobk8yv34"]
 
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_o5qli"]
-[ext_resource type="Script" path="res://assets/main.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://bugaq53ph4wh0" path="res://assets/scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ybkoebm17cc5" path="res://scenes/ui.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://0wsly6guv5jr" path="res://scenes/pickup.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" path="res://scenes/roamerEnemey.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://d0cck7d0rr4n6" path="res://scenes/roamerEnemy.tscn" id="4_tbgi4"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jyhfs"]
 polygon = PackedVector2Array(614, 216, 779, 216, 779, 349, 614, 349)

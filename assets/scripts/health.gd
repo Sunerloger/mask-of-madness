@@ -25,4 +25,3 @@ func get_health():
 func update_current_health(health_diff: float):
 	_current_health = clamp(_current_health + health_diff, 0, max_health)
 	_update_current_health_ui()
-	

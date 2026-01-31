@@ -1,10 +1,16 @@
-extends CharacterBody2D
+extends EnemyBase
 
 # movememnt speed of enemy
 const SPEED = 200.0
 # radius at which the enemy circles the player
 const RADIUS = 200
+
+@export var strength: int = 5
+
 @onready var player = get_tree().get_first_node_in_group("player")
+
+func get_strength():
+	return strength
 
 # this enemy circles the player at a fixed radius 
 # if the player looks away it moves closer
