@@ -5,8 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://jkjfp3je2rev" path="res://assets/textures/new_gradient_texture_2d.tres" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://assets/scripts/sanity.gd" id="4_qlg0r"]
-[ext_resource type="Script" uid="uid://gsk8kp7kskb1" path="res://assets/scripts/player_hurt_box.gd" id="6_tuyoq"]
-
+[ext_resource type="Script" path="res://assets/scripts/player_hurt_box.gd" id="6_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 34.132095

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bh2i11u6v0wry" path="res://assets/scripts/victoryScene.gd" id="1_03u3s"]
 [ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="1_ppghm"]
 [ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="2_e22nn"]
+[ext_resource type="Texture2D" uid="uid://dl160p1s76qwk" path="res://assets/textures/black-glitch-effect-texture.jpg" id="4_aelo8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aelo8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e22nn"]
 font = ExtResource("1_ppghm")
@@ -30,7 +33,18 @@ layout_mode = 0
 offset_top = -2.0
 offset_right = 1920.0
 offset_bottom = 1078.0
-color = Color(0.21568628, 0.05490196, 0.07058824, 1)
+color = Color(0.05490196, 0.007843138, 0.007843138, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=386391066]
+material = SubResource("CanvasItemMaterial_aelo8")
+layout_mode = 0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 4864.9053
+offset_bottom = 2721.324
+scale = Vector2(0.394371, 0.394371)
+texture = ExtResource("4_aelo8")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=1579382628]
 layout_mode = 0

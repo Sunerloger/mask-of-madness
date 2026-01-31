@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://da51ta04numey"]
 
 [ext_resource type="Script" uid="uid://y84hssh0ah53" path="res://assets/scripts/start_menu.gd" id="1_cpawi"]
+[ext_resource type="Texture2D" uid="uid://dl160p1s76qwk" path="res://assets/textures/black-glitch-effect-texture.jpg" id="2_8fwge"]
 [ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="2_rc7r4"]
 [ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="3_8fwge"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rc7r4"]
+blend_mode = 4
+light_mode = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_yhodh"]
 font = ExtResource("2_rc7r4")
@@ -29,7 +34,18 @@ metadata/_edit_vertical_guides_ = [293.0, 1630.0]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0.21536452, 0.053762384, 0.06992924, 1)
+color = Color(0.056435257, 0.006712084, 0.009262486, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1554347912]
+material = SubResource("CanvasItemMaterial_rc7r4")
+layout_mode = 0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 4864.9053
+offset_bottom = 2721.324
+scale = Vector2(0.394371, 0.394371)
+texture = ExtResource("2_8fwge")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=1196732312]
 layout_mode = 0
