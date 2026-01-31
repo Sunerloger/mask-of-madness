@@ -57,5 +57,11 @@ script = ExtResource("6_tuyoq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox" unique_id=301791299]
 shape = SubResource("CircleShape2D_qlg0r")
 
+[node name="InvulnTimer" type="Timer" parent="PlayerHurtBox" unique_id=2070237220]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="Sanity/Timer" to="Sanity" method="_on_timer_timeout"]
 [connection signal="body_entered" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_body_exited"]
+[connection signal="timeout" from="PlayerHurtBox/InvulnTimer" to="PlayerHurtBox" method="_on_invuln_timer_timeout"]
