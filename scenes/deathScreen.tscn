@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://xuixrxh2fywk"]
+
+[ext_resource type="Texture2D" uid="uid://uoh7x4qjibuh" path="res://assets/textures/maxresdefault.jpg" id="1_d1fl2"]
+[ext_resource type="Script" uid="uid://cduf65oroxdhf" path="res://assets/scripts/death_screen.gd" id="1_e11pr"]
+[ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="2_e11pr"]
+[ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="3_103fh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hgxwa"]
+font = ExtResource("2_e11pr")
+font_size = 348
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.7529412)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1t62"]
+font = ExtResource("3_103fh")
+font_size = 63
+
+[node name="deathScreen" type="Control" unique_id=941377923]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e11pr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2146300509]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 1920.0
+offset_bottom = 1078.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=986937818]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -178.0
+offset_right = 4864.9053
+offset_bottom = 2545.324
+scale = Vector2(0.394371, 0.394371)
+texture = ExtResource("1_d1fl2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=512276752]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 1916.0
+offset_bottom = 396.0
+label_settings = SubResource("LabelSettings_hgxwa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="." unique_id=30162851]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 607.0
+offset_right = 672.04877
+offset_bottom = 785.0
+
+[node name="Label" type="Label" parent="Restart" unique_id=1832591889]
+layout_mode = 0
+offset_right = 382.0
+offset_bottom = 180.0
+text = "RESTART"
+label_settings = SubResource("LabelSettings_t1t62")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="." unique_id=896310190]
+layout_mode = 0
+offset_left = 1248.0
+offset_top = 607.0
+offset_right = 1630.0488
+offset_bottom = 785.0
+
+[node name="Label" type="Label" parent="Exit" unique_id=2128685056]
+layout_mode = 0
+offset_right = 382.0
+offset_bottom = 180.0
+text = "MENU"
+label_settings = SubResource("LabelSettings_t1t62")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 @onready var occluder := $PointLight2D/LightOccluder2D
-
+@onready var health := $Health
 var facing_direction: Vector2
 
 const TARGET_Y_SCALE := 2.0
@@ -14,6 +14,12 @@ var start_scale_y := 1.0
 func _ready():
 	start_scale_y = occluder.scale.y
 
+func _process(delta: float) -> void:
+	if(health._current_health <= 0):
+		get_tree().change_scene_to_file("res://scenes/deathScreen.tscn")
+	
+	
+	
 func _physics_process(delta: float) -> void:
 	facing_direction = (get_global_mouse_position() - global_position).normalized()
 	
