@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c4yn7u0jiis7c"]
+
+[ext_resource type="PackedScene" uid="uid://dgme6dw1flge5" path="res://scenes/player.tscn" id="1_56bqt"]
+[ext_resource type="PackedScene" uid="uid://855g3gkup8e6" path="res://scenes/teleportationEnemy.tscn" id="2_56bqt"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3dtr5"]
+polygon = PackedVector2Array(614, 216, 779, 216, 779, 349, 614, 349)
+
+[node name="PlayerMovTest" type="Node2D" unique_id=842354049]
+
+[node name="Player" parent="." unique_id=68192137 instance=ExtResource("1_56bqt")]
+position = Vector2(204, 207)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=643584224]
+z_index = -1
+position = Vector2(204, 207)
+color = Color(0.21229082, 0.124217756, 0.058720484, 1)
+polygon = PackedVector2Array(-204, -207, -204, 439, 948, 441, 950, -207)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=727007295]
+color = Color(0, 0, 0, 1)
+
+[node name="Box" type="Polygon2D" parent="." unique_id=1344022613]
+polygon = PackedVector2Array(617, 216, 779, 216, 779, 349, 614, 349)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Box" unique_id=920650337]
+z_index = -2
+occluder = SubResource("OccluderPolygon2D_3dtr5")
+
+[node name="TeleportationEnemy" parent="." unique_id=2031307927 instance=ExtResource("2_56bqt")]
+position = Vector2(597, 214)

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://855g3gkup8e6"]
+
+[ext_resource type="Script" uid="uid://dtalamg5w6ok7" path="res://assets/scripts/teleportation_enemy.gd" id="1_ejgg4"]
+[ext_resource type="Texture2D" uid="uid://d1ne2iqtsfush" path="res://assets/sprites/enemy.png" id="2_jf04x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vw3a7"]
+
+[node name="TeleportationEnemy" type="CharacterBody2D" unique_id=2031307927]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_ejgg4")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=121867979]
+texture = ExtResource("2_jf04x")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=14359778]
+position = Vector2(-7.15, 0)
+scale = Vector2(5.5, 5.5)
+shape = SubResource("CircleShape2D_vw3a7")
+
+[node name="TeleportTimer" type="Timer" parent="." unique_id=2116603524]
+autostart = true
+
+[node name="PreTeleportTimer" type="Timer" parent="." unique_id=1692394467]
+one_shot = true
+
+[connection signal="timeout" from="TeleportTimer" to="." method="_on_timer_timeout"]
