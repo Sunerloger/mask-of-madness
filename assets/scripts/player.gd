@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 300.0
 @onready var occluder := $PointLight2D/LightOccluder2D
 
+var facing_direction: Vector2
+
 const TARGET_Y_SCALE := 2.0
 const DURATION := 10.0
 
@@ -14,6 +16,7 @@ func _ready():
 	start_scale_y = occluder.scale.y
 
 func _physics_process(delta: float) -> void:
+	facing_direction = (get_global_mouse_position() - global_position).normalized()
 	
 	if elapsed < DURATION:
 		elapsed += delta
