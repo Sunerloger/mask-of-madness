@@ -5,6 +5,7 @@ const SPEED = 300.0
 @onready var lightCone := $PointLight2D
 @onready var health := $Health
 @onready var sanity := $Sanity
+@onready var sprite_2d: Sprite2D = $Sprite2D
 var facing_direction: Vector2
 
 const TARGET_Y_SCALE := 2.0
@@ -36,13 +37,18 @@ func _physics_process(delta: float) -> void:
 
 	velocity = Vector2(0,0)
 	lightCone.look_at(get_global_mouse_position())
-	var direction := Input.get_axis("Left", "Right")
+	var input_dir := Input.get_axis("Left", "Right")
 	var up_down := Input.get_axis("Up", "Down")
-	if direction:
-		velocity.x = direction * SPEED
+	if input_dir:
+		velocity.x = input_dir * SPEED
 		velocity.y = up_down * SPEED
 	elif up_down:
-		velocity.x = direction * SPEED
+		velocity.x = input_dir * SPEED
 		velocity.y = up_down * SPEED
+		
+	if input_dir < 0:
+		sprite_2d.flip_h = true
+	elif input_dir > 0:
+		sprite_2d.flip_h = false
 	
 	move_and_slide()

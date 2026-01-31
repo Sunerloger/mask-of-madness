@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bpc3oybuv2klf"]
 
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_3dtr5"]
-[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/wall_tileset.tres" id="2_fvopn"]
+[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="2_fvopn"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fvopn"]
 blend_mode = 2
@@ -24,7 +24,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 position = Vector2(204, 207)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=428844168]
+[node name="Camera2D2" type="Camera2D" parent="Player" unique_id=428844168]
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Player" unique_id=576218188]
 remote_path = NodePath("../../CanvasGroup/mask")
