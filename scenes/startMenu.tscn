@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bjbu8xekayudx"]
+[gd_scene format=3 uid="uid://cnwd7pn5t2n8n"]
 
 [ext_resource type="Script" uid="uid://y84hssh0ah53" path="res://assets/scripts/start_menu.gd" id="1_cpawi"]
 [ext_resource type="Texture2D" uid="uid://dl160p1s76qwk" path="res://assets/textures/black-glitch-effect-texture.jpg" id="2_8fwge"]
