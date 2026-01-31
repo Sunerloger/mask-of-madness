@@ -180,20 +180,6 @@ texture_region_size = Vector2i(180, 180)
 tile_size = Vector2i(180, 180)
 sources/0 = SubResource("TileSetAtlasSource_eb6dy")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_choun"]
-blend_mode = 2
-
-[sub_resource type="Gradient" id="Gradient_muem4"]
-offsets = PackedFloat32Array(0, 0.36363637)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ya4ey"]
-gradient = SubResource("Gradient_muem4")
-width = 1600
-height = 1000
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
 texture = ExtResource("2_eb6dy")
 texture_region_size = Vector2i(180, 180)
@@ -323,12 +309,6 @@ position = Vector2(0, 40)
 tile_map_data = PackedByteArray("AAD//wAAAAACAAQAAAD//wEAAAACAAUAAAD9/wIAAAADAAIAAAD9/wMAAAADAAMAAAAFAP//AAAEAAMAAAD+/wIAAAAFAAIAAAD+/wMAAAAFAAMAAAD7/wAAAAAFAAIAAAD7/wEAAAAFAAMAAAABAAQAAAAFAAUAAAD6/wEAAAAEAAUAAAAAAPz/AAAEAAUAAAD9////AAADAAUAAAD5//3/AAACAAIAAAD5//7/AAACAAMAAAAEAP7/AAACAAIAAAAEAP//AAACAAMAAAACAAIAAAADAAUAAAADAPv/AAACAAQAAAADAPz/AAACAAUAAAD5/wEAAAAEAAMAAAAJAAEAAAAEAAMAAAAIAP3/AAADAAIAAAAIAP7/AAADAAMAAAD9//z/AAADAAIAAAD9//3/AAADAAMAAAA=")
 tile_set = SubResource("TileSet_trceg")
 
-[node name="mask" type="Sprite2D" parent="CanvasGroup" unique_id=108153130]
-material = SubResource("CanvasItemMaterial_choun")
-position = Vector2(424, 148)
-scale = Vector2(2, 2)
-texture = SubResource("GradientTexture2D_ya4ey")
-
 [node name="ysort" type="Node2D" parent="CanvasGroup" unique_id=577126407]
 y_sort_enabled = true
 
@@ -358,7 +338,6 @@ tile_map_data = PackedByteArray("AAD//wAAAAACAAQAAAD//wEAAAACAAUAAAD9/wIAAAADAAI
 tile_set = SubResource("TileSet_jkv2x")
 
 [node name="ysorted_mask" type="Sprite2D" parent="CanvasGroup" unique_id=1613369799]
-visible = false
 material = SubResource("CanvasItemMaterial_jbj1t")
 position = Vector2(424, 148)
 scale = Vector2(2, 2)
