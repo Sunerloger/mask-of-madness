@@ -27,6 +27,7 @@ window/size/viewport_height=1080
 [global_group]
 
 player=""
+exit=""
 
 [input]
 

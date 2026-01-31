@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://daj7u563usssc"]
 
-[ext_resource type="Script" path="res://assets/scripts/roamerEnemy.gd" id="1_1gyx3"]
+[ext_resource type="Script" uid="uid://bf1kwi27rlutx" path="res://assets/scripts/roamerEnemy.gd" id="1_1gyx3"]
 [ext_resource type="Texture2D" uid="uid://p647bojs85kq" path="res://assets/sprites/temp_enemy_tex.tres" id="2_ojp5j"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ojp5j"]

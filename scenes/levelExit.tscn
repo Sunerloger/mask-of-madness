@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://6w5huv2jvyje"]
+[gd_scene format=3 uid="uid://jnra64qpi14s"]
 
-[ext_resource type="Script" uid="uid://dsn11qqi3sw3j" path="res://assets/scripts/level_exit.gd" id="1_7lhay"]
+[ext_resource type="Script" path="res://assets/scripts/level_exit.gd" id="1_7lhay"]
 [ext_resource type="Texture2D" uid="uid://djrpju6nrw8j2" path="res://assets/sprites/exit_temp.png" id="1_qllqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lhay"]
 size = Vector2(11.764694, 20)
 
-[node name="levelExit" type="Area2D" unique_id=1685547513]
+[node name="levelExit" type="Area2D" unique_id=1685547513 groups=["exit"]]
 scale = Vector2(1.3600013, 1.3600013)
 collision_layer = 8
 collision_mask = 2

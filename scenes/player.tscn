@@ -23,6 +23,7 @@ shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=624848177]
 texture = ExtResource("2_tuyoq")
+offset = Vector2(0, -60)
 flip_h = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1077787437]
