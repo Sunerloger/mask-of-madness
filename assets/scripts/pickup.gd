@@ -12,4 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	Global.OnSanityChange.emit(5)
+	if body.is_in_group("player"):
+		var sanity = body.get_node("Sanity")
+		sanity.change_sanity(5)

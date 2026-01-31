@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cb0e6vgpl6fbo" path="res://assets/sprites/icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://8wqx3vp0usx3" path="res://assets/scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://scenes/sanity.gd" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
@@ -15,3 +16,11 @@ texture = ExtResource("1_3vyb7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135537738]
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Sanity" type="Node2D" parent="." unique_id=585991065]
+script = ExtResource("3_qhqgy")
+
+[node name="Timer" type="Timer" parent="Sanity" unique_id=910753701]
+autostart = true
+
+[connection signal="timeout" from="Sanity/Timer" to="Sanity" method="_on_timer_timeout"]

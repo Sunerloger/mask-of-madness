@@ -24,10 +24,5 @@ position = Vector2(235, 199)
 
 [node name="UI" parent="." unique_id=87986574 instance=ExtResource("2_0wfyh")]
 
-[node name="Timer" type="Timer" parent="." unique_id=2093164933]
-autostart = true
-
 [node name="Pickup" parent="." unique_id=707575940 instance=ExtResource("4_jyhfs")]
 position = Vector2(905, 501)
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
