@@ -1,9 +1,11 @@
-[gd_scene format=3 uid="uid://g8ahwlxgn5xo"]
+[gd_scene format=3 uid="uid://chut5yo1rjwj0"]
 
 [ext_resource type="Script" uid="uid://c2tm78yss8ac6" path="res://assets/scripts/sanity_pickup_spawner.gd" id="1_p65mm"]
 
 [node name="SanityPickupSpawner" type="Node2D" unique_id=1046257688]
 script = ExtResource("1_p65mm")
+occlusion_layer_id = null
+max_tries = null
 
 [node name="Timer" type="Timer" parent="." unique_id=1417170706]
 autostart = true
