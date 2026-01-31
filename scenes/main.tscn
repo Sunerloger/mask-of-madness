@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" path="res://assets/scripts/main.gd" id="1_sugp2"]
-[ext_resource type="PackedScene" path="res://scenes/ui.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" path="res://scenes/roamerEnemy.tscn" id="4_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://g8ahwlxgn5xo" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
-[ext_resource type="PackedScene" path="res://scenes/levelExit.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
-[ext_resource type="PackedScene" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://bhjnjkxtqu12" path="res://scenes/ui.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://d0cck7d0rr4n6" path="res://scenes/roamerEnemy.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://chut5yo1rjwj0" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://6w5huv2jvyje" path="res://scenes/levelExit.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bpowpx16atsxm" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cc5wo2i3x01fc" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
 [ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="9_85g3d"]
+[ext_resource type="Shader" uid="uid://2wf1mrrl3qs8" path="res://shaders/post_processing_effects/canvas_item/wobble_shader.gdshader" id="10_choun"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_choun"]
 blend_mode = 2
@@ -23,6 +24,17 @@ width = 1600
 height = 1000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_choun"]
+frequency = 0.0401
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ya4ey"]
+noise = SubResource("FastNoiseLite_choun")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
+shader = ExtResource("10_choun")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ya4ey")
 
 [node name="Main" type="Node2D" unique_id=1351415594]
 script = ExtResource("1_sugp2")
@@ -42,10 +54,6 @@ position = Vector2(424, 148)
 remote_path = NodePath("../../CanvasGroup/mask")
 update_rotation = false
 update_scale = false
-
-[node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
-
-[node name="UI" parent="UILayer" unique_id=87986574 instance=ExtResource("2_0wfyh")]
 
 [node name="levelExit" parent="." unique_id=1685547513 instance=ExtResource("6_tefeu")]
 position = Vector2(1024, 366)
@@ -80,3 +88,17 @@ z_index = -1
 position = Vector2(204, 207)
 color = Color(0.58, 0.58, 0.58, 1)
 polygon = PackedVector2Array(-1915, -1576, -2594, 1793, 3144, 1893, 3161, -1482)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=969062095]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2147157223]
+material = SubResource("ShaderMaterial_choun")
+offset_left = -34.0
+offset_top = -3.0
+offset_right = 6.0
+offset_bottom = 37.0
+scale = Vector2(47.999996, 27)
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
+
+[node name="UI" parent="UILayer" unique_id=87986574 instance=ExtResource("2_0wfyh")]

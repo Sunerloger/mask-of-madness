@@ -1,13 +1,24 @@
-[gd_scene format=3 uid="uid://bjbu8xekayudx"]
+[gd_scene format=3 uid="uid://cnwd7pn5t2n8n"]
 
-[ext_resource type="Script" path="res://assets/scripts/start_menu.gd" id="1_cpawi"]
+[ext_resource type="Script" uid="uid://y84hssh0ah53" path="res://assets/scripts/start_menu.gd" id="1_cpawi"]
 [ext_resource type="Texture2D" uid="uid://dl160p1s76qwk" path="res://assets/textures/black-glitch-effect-texture.jpg" id="2_8fwge"]
 [ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="2_rc7r4"]
+[ext_resource type="Shader" uid="uid://chai7bgsgg0us" path="res://shaders/post_processing_effects/canvas_item/glitch_shader.gdshader" id="2_yhodh"]
 [ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="3_8fwge"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rc7r4"]
-blend_mode = 4
-light_mode = 2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7kfin"]
+shader = ExtResource("2_yhodh")
+shader_parameter/glitch_chance = 0.2
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_density = 14.0
+shader_parameter/slice_strength = 0.38
+shader_parameter/shake_strength = 0.02
+shader_parameter/chroma_offset = 0.016
+shader_parameter/noise_strength = 0.2
+shader_parameter/color_flash_strength = 0.4
+shader_parameter/scanline_strength = 0.18
+shader_parameter/local_warp_strength = 0.14
+shader_parameter/flip_chance = 0.15
 
 [sub_resource type="LabelSettings" id="LabelSettings_yhodh"]
 font = ExtResource("2_rc7r4")
@@ -44,7 +55,7 @@ offset_bottom = 1080.0
 color = Color(0.056435257, 0.006712084, 0.009262486, 1)
 
 [node name="Background texture" type="TextureRect" parent="." unique_id=1554347912]
-material = SubResource("CanvasItemMaterial_rc7r4")
+material = SubResource("ShaderMaterial_7kfin")
 layout_mode = 0
 offset_left = 4.0
 offset_top = -2.0

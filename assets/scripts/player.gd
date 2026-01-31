@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-@onready var occluder := $PointLight2D/LightOccluder2D
 @onready var lightCone := $PointLight2D
 @onready var health := $Health
 @onready var sanity := $Sanity
@@ -13,9 +12,6 @@ const DURATION := 1.0
 
 var elapsed := 0.0
 var start_scale_y := 1.0
-
-func _ready():
-	start_scale_y = occluder.scale.y
 
 func _process(delta: float) -> void:
 	if(health._current_health <= 0):
