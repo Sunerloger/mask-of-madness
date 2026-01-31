@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="mask-of-madness"
-run/main_scene="uid://d4jfoobk8yv34"
+run/main_scene="uid://da51ta04numey"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
 [autoload]
 
 Global="*uid://dsni4rqa6f2u6"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [global_group]
 
