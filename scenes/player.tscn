@@ -25,7 +25,6 @@ script = ExtResource("1_g2els")
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=624848177]
-scale = Vector2(0.45, 0.45)
 texture = ExtResource("2_tuyoq")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1077787437]
