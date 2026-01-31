@@ -3,10 +3,11 @@ extends CharacterBody2D
 const SPEED = 300.0
 @onready var occluder := $PointLight2D/LightOccluder2D
 @onready var health := $Health
+@onready var sanity := $Sanity
 var facing_direction: Vector2
 
 const TARGET_Y_SCALE := 2.0
-const DURATION := 10.0
+const DURATION := 1.0
 
 var elapsed := 0.0
 var start_scale_y := 1.0
@@ -23,10 +24,14 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	facing_direction = (get_global_mouse_position() - global_position).normalized()
 	
-	if elapsed < DURATION:
-		elapsed += delta
-		var t := elapsed / DURATION
-		occluder.scale.y = lerp(start_scale_y, TARGET_Y_SCALE, t)
+	if sanity._current_sanity <= 0:
+		if elapsed < DURATION:
+			elapsed += delta
+		else: 
+			health.update_current_health(-1)
+			elapsed = 0.0
+
+	
 
 	velocity = Vector2(0,0)
 	look_at(get_global_mouse_position())
