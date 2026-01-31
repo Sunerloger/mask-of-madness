@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://da51ta04numey"]
+[gd_scene format=3 uid="uid://bjbu8xekayudx"]
 
-[ext_resource type="Script" uid="uid://y84hssh0ah53" path="res://assets/scripts/start_menu.gd" id="1_cpawi"]
+[ext_resource type="Script" path="res://assets/scripts/start_menu.gd" id="1_cpawi"]
 [ext_resource type="Texture2D" uid="uid://dl160p1s76qwk" path="res://assets/textures/black-glitch-effect-texture.jpg" id="2_8fwge"]
 [ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="2_rc7r4"]
 [ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="3_8fwge"]
@@ -14,6 +14,13 @@ font = ExtResource("2_rc7r4")
 font_size = 348
 shadow_size = 14
 shadow_color = Color(0, 0, 0, 0.7529412)
+
+[sub_resource type="FontVariation" id="FontVariation_rc7r4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8fwge"]
+line_spacing = 8.0
+font = SubResource("FontVariation_rc7r4")
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_7kfin"]
 font = ExtResource("3_8fwge")
@@ -30,13 +37,13 @@ script = ExtResource("1_cpawi")
 metadata/_edit_horizontal_guides_ = [921.0]
 metadata/_edit_vertical_guides_ = [293.0, 1630.0]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2029423235]
+[node name="Background color" type="ColorRect" parent="." unique_id=2029423235]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.056435257, 0.006712084, 0.009262486, 1)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1554347912]
+[node name="Background texture" type="TextureRect" parent="." unique_id=1554347912]
 material = SubResource("CanvasItemMaterial_rc7r4")
 layout_mode = 0
 offset_left = 4.0
@@ -47,7 +54,7 @@ scale = Vector2(0.394371, 0.394371)
 texture = ExtResource("2_8fwge")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=1196732312]
+[node name="MainTitle" type="Label" parent="." unique_id=1196732312]
 layout_mode = 0
 offset_top = 50.0
 offset_right = 1916.0
@@ -57,12 +64,27 @@ label_settings = SubResource("LabelSettings_yhodh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Description" type="Label" parent="." unique_id=1638868244]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 642.0
+offset_right = 1935.0
+offset_bottom = 1009.0
+text = "The Mask of Madness has taken hold of you!
+Your sanity level shapes how you see the world,
+ it will slowly fade.
+Move through the map using WASD and use your flashlight with the mouse.
+Find the exit before you become insane!"
+label_settings = SubResource("LabelSettings_8fwge")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Start" type="Button" parent="." unique_id=1600349736]
 layout_mode = 0
-offset_left = 299.0
-offset_top = 504.0
-offset_right = 681.04877
-offset_bottom = 682.0
+offset_left = 298.0
+offset_top = 398.0
+offset_right = 680.04877
+offset_bottom = 576.0
 
 [node name="Label" type="Label" parent="Start" unique_id=1767350148]
 layout_mode = 0
@@ -75,10 +97,10 @@ vertical_alignment = 1
 
 [node name="Settings" type="Button" parent="." unique_id=1886301729]
 layout_mode = 0
-offset_left = 298.0
-offset_top = 743.0
-offset_right = 680.0488
-offset_bottom = 921.0
+offset_left = 769.0
+offset_top = 398.0
+offset_right = 1151.0488
+offset_bottom = 576.0
 
 [node name="Label" type="Label" parent="Settings" unique_id=777941393]
 layout_mode = 0
@@ -92,9 +114,9 @@ vertical_alignment = 1
 [node name="Exit" type="Button" parent="." unique_id=608679311]
 layout_mode = 0
 offset_left = 1234.0
-offset_top = 739.0
+offset_top = 398.0
 offset_right = 1616.0488
-offset_bottom = 917.0
+offset_bottom = 576.0
 
 [node name="Label" type="Label" parent="Exit" unique_id=259319337]
 layout_mode = 0

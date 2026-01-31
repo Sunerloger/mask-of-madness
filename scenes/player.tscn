@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bs3xkvcih0trc" path="res://assets/sprites/player.png" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dfxlbth5qcvoc" path="res://assets/sprites/conev2.png" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://jkjfp3je2rev" path="res://assets/textures/new_gradient_texture_2d.tres" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://assets/scripts/sanity.gd" id="4_qlg0r"]
+[ext_resource type="Script" path="res://assets/scripts/health.gd" id="4_dqkch"]
+[ext_resource type="Script" path="res://assets/scripts/sanity.gd" id="4_qlg0r"]
 [ext_resource type="Script" path="res://assets/scripts/player_hurt_box.gd" id="6_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
@@ -19,11 +19,12 @@ collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086097468]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086097468 groups=["player"]]
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=624848177]
 texture = ExtResource("2_tuyoq")
+flip_h = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1077787437]
 position = Vector2(-1, 1)
@@ -49,9 +50,11 @@ autostart = true
 script = ExtResource("4_dqkch")
 
 [node name="PlayerHurtBox" type="Area2D" parent="." unique_id=1819875844]
+collision_layer = 2
+collision_mask = 31
 script = ExtResource("6_tuyoq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox" unique_id=301791299]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox" unique_id=301791299 groups=["player"]]
 shape = SubResource("CircleShape2D_qlg0r")
 
 [node name="InvulnTimer" type="Timer" parent="PlayerHurtBox" unique_id=2070237220]

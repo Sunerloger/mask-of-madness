@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://0wsly6guv5jr"]
 
-[ext_resource type="Script" uid="uid://causv5klvq26r" path="res://assets/scripts/pickup.gd" id="1_7cqbe"]
+[ext_resource type="Script" uid="uid://causv5klvq26r" path="res://assets/scripts/sanity_pickup.gd" id="1_7cqbe"]
 [ext_resource type="Texture2D" uid="uid://cb0e6vgpl6fbo" path="res://assets/sprites/icon.svg" id="1_pg2rt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(45.875, 45.25)
 
-[node name="Pickup" type="Area2D" unique_id=707575940]
+[node name="SanityPickup" type="Area2D" unique_id=707575940]
+collision_layer = 16
+collision_mask = 2
 script = ExtResource("1_7cqbe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=105963796]
