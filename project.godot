@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="mask-of-madness"
-run/main_scene="uid://d4jfoobk8yv34"
+run/main_scene="uid://bjbu8xekayudx"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 

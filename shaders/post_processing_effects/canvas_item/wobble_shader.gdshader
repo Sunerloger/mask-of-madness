@@ -5,7 +5,7 @@ uniform sampler2D noise_texture:repeat_enable;
 
 void fragment() {
 	vec3 noise_color = texture(noise_texture, SCREEN_UV + (TIME / 5.0)).rgb;
-	vec3 color = texture(screen_texture, SCREEN_UV + (noise_color.b / 150.0)).rgb; 
+	vec3 color = texture(screen_texture, SCREEN_UV + (noise_color.b / 40.0)).rgb; 
 	COLOR.rgb = color;
 }
 
