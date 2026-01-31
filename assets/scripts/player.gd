@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 @onready var occluder := $PointLight2D/LightOccluder2D
+@onready var lightCone := $PointLight2D
 @onready var health := $Health
 @onready var sanity := $Sanity
 var facing_direction: Vector2
@@ -34,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	velocity = Vector2(0,0)
-	look_at(get_global_mouse_position())
+	lightCone.look_at(get_global_mouse_position())
 	var direction := Input.get_axis("Left", "Right")
 	var up_down := Input.get_axis("Up", "Down")
 	if direction:
