@@ -1,7 +1,21 @@
 [gd_scene format=4 uid="uid://bpc3oybuv2klf"]
 
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="1_3dtr5"]
-[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/wall_tileset.tres" id="2_fvopn"]
+[ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="2_fvopn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fvopn"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_onrkg"]
+offsets = PackedFloat32Array(0, 0.36363637)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oghin"]
+gradient = SubResource("Gradient_onrkg")
+width = 1600
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="PlayerMovTest" type="Node2D" unique_id=842354049]
 y_sort_enabled = true
@@ -10,7 +24,12 @@ y_sort_enabled = true
 y_sort_enabled = true
 position = Vector2(204, 207)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=428844168]
+[node name="Camera2D2" type="Camera2D" parent="Player" unique_id=428844168]
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Player" unique_id=576218188]
+remote_path = NodePath("../../CanvasGroup/mask")
+update_rotation = false
+update_scale = false
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=643584224]
 z_index = -1
@@ -22,8 +41,16 @@ polygon = PackedVector2Array(-1915, -1576, -2594, 1793, 3144, 1893, 3161, -1482)
 visible = false
 color = Color(0, 0, 0, 1)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1395126079]
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=2144273003]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="CanvasGroup" unique_id=1395126079]
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAFAAIAAAAAAAAAAAACAAIAAAAAAAMAAAABAAQAAAADAAMAAAAIAAEAAAABAAIAAAAFAP//AAADAAMAAAAEAP//AAABAAMAAAABAP7/AAAAAAMAAAD//wEAAAAAAAMAAAD8/wIAAAAAAAAAAAD8/wMAAAABAAIAAAD9/wMAAAACAAMAAAD+/wMAAAADAAMAAAAAAAQAAAABAAMAAAD+//3/AAADAAMAAAD9//3/AAABAAAAAAD9//7/AAAAAAEAAAD9////AAAAAAIAAAAIAP7/AAABAAIAAAAJAP7/AAADAAMAAAAKAAEAAAACAAMAAAALAAIAAAAAAAIAAAALAAEAAAADAAAAAAAJAAEAAAACAAMAAAAIAAAAAAAAAAAAAAAFAAMAAAAAAAIAAAAIAAMAAAAAAAAAAAAIAAQAAAABAAIAAAAJAAQAAAADAAMAAAAEAAQAAAAAAAMAAAALAP//AAAAAAMAAAD6/wQAAAAAAAEAAAD6/wUAAAAAAAIAAAD5/wMAAAABAAMAAAD6/wMAAAADAAAAAAD7//3/AAAAAAMAAAADAPz/AAAAAAMAAAAEAP3/AAABAAMAAAAFAP3/AAADAAMAAAABAPz/AAADAAMAAAAAAPz/AAABAAMAAAAMAP3/AAAAAAMAAAANAP//AAAAAAAAAAANAAAAAAAAAAIAAAAMAAQAAAAAAAMAAAD6//7/AAADAAMAAAD5//7/AAABAAMAAAD4/wEAAAACAAMAAAD5/wEAAAACAAMAAAD6/wEAAAACAAMAAAD7/wEAAAADAAIAAAD3/wEAAAABAAMAAAD7/wAAAAAAAAEAAAD7////AAAAAAAAAAAIAP3/AAAAAAAAAAA=")
 tile_set = ExtResource("2_fvopn")
 y_sort_origin = 200
+
+[node name="mask" type="Sprite2D" parent="CanvasGroup" unique_id=1387925108]
+material = SubResource("CanvasItemMaterial_fvopn")
+position = Vector2(204, 207)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_oghin")

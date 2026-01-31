@@ -46,7 +46,7 @@ func spawnEnemy(enemyType: PackedScene) -> void:
 	var spawn_position = findSpawnPosition()
 	enemy.global_position = spawn_position
 	print("Spawner: Spawning at (%d, %d) of type %s" % [spawn_position.x, spawn_position.y, enemyType.to_string()])
-	get_parent().add_child(enemy)
+	get_parent().get_parent().get_node("Enemies").add_child(enemy)
 	enemies.append(enemy)
 
 func findSpawnPosition():
