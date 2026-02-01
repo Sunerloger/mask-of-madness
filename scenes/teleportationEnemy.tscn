@@ -29,4 +29,6 @@ autostart = true
 [node name="PreTeleportTimer" type="Timer" parent="." unique_id=1692394467]
 one_shot = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1698576779]
+
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_timer_timeout"]
