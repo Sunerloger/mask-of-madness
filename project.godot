@@ -30,6 +30,7 @@ window/size/viewport_height=1080
 
 player=""
 exit=""
+enemies=""
 
 [input]
 

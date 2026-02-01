@@ -4,7 +4,7 @@ extends EnemyBase
 const SPEED = 200.0
 # radius at which the enemy circles the player
 const RADIUS = 200
-const LIFE_TIME = 20
+const LIFE_TIME = 30
 
 @export var strength: int = 5
 

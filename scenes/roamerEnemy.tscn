@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bf1kwi27rlutx" path="res://assets/scripts/roamerEnemy.gd" id="1_1gyx3"]
 [ext_resource type="Texture2D" uid="uid://p647bojs85kq" path="res://assets/sprites/temp_enemy_tex.tres" id="2_ojp5j"]
 [ext_resource type="AudioStream" uid="uid://ci7e13n3sw4n3" path="res://assets/sounds/crow_standin.mp3" id="3_vkedb"]
-[ext_resource type="Script" uid="uid://b8l21ug62igo2" path="res://assets/scripts/floater_audio.gd" id="4_vk80v"]
+[ext_resource type="Script" path="res://assets/scripts/floater_audio.gd" id="4_vk80v"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hpcfp"]
 light_mode = 2

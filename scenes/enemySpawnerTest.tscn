@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bcfrtir47xeo3"]
 
 [ext_resource type="Script" uid="uid://bugaq53ph4wh0" path="res://assets/scripts/main.gd" id="1_bkitg"]
-[ext_resource type="PackedScene" uid="uid://0wsly6guv5jr" path="res://scenes/pickup.tscn" id="2_61cs1"]
+[ext_resource type="PackedScene" uid="uid://0wsly6guv5jr" path="res://scenes/sanityPickup.tscn" id="2_61cs1"]
 [ext_resource type="PackedScene" uid="uid://ckoglvcvqgaqs" path="res://scenes/player.tscn" id="3_1gq4u"]
+[ext_resource type="PackedScene" uid="uid://jnra64qpi14s" path="res://scenes/levelExit.tscn" id="5_1gq4u"]
 [ext_resource type="PackedScene" uid="uid://cc5wo2i3x01fc" path="res://scenes/enemySpawner.tscn" id="5_61cs1"]
 [ext_resource type="PackedScene" uid="uid://bhjnjkxtqu12" path="res://scenes/ui.tscn" id="5_i30dt"]
 
@@ -38,6 +39,9 @@ position = Vector2(424, 148)
 collision_layer = 1
 
 [node name="EnemySpawner" parent="World" unique_id=1973647147 instance=ExtResource("5_61cs1")]
+
+[node name="levelExit" parent="World" unique_id=1685547513 instance=ExtResource("5_1gq4u")]
+position = Vector2(1150, 120)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1290050398]
 

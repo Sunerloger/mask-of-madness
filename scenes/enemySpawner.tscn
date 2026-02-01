@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cc5wo2i3x01fc"]
 
 [ext_resource type="Script" uid="uid://1nyo8ukswj5d" path="res://assets/scripts/enemy_spawner.gd" id="1_8geys"]
-[ext_resource type="PackedScene" uid="uid://d0cck7d0rr4n6" path="res://scenes/roamerEnemy.tscn" id="2_lox8h"]
+[ext_resource type="PackedScene" uid="uid://daj7u563usssc" path="res://scenes/roamerEnemy.tscn" id="2_lox8h"]
 [ext_resource type="PackedScene" uid="uid://855g3gkup8e6" path="res://scenes/teleportationEnemy.tscn" id="3_tq322"]
 
 [node name="EnemySpawner" type="Node2D" unique_id=1973647147]
@@ -10,7 +10,10 @@ roamerEnemy = ExtResource("2_lox8h")
 teleportationEnemy = ExtResource("3_tq322")
 
 [node name="Timer" type="Timer" parent="." unique_id=77023679]
-wait_time = 3.0
+wait_time = 1.66
 autostart = true
+
+[node name="Enemies" type="Node2D" parent="." unique_id=43375540 groups=["enemies"]]
+position = Vector2(905, 501)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
