@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://causv5klvq26r" path="res://assets/scripts/sanity_pickup.gd" id="1_7cqbe"]
 [ext_resource type="Texture2D" uid="uid://cmde64l2ffhy4" path="res://assets/sprites/leaves.png" id="2_jc6o3"]
-[ext_resource type="Texture2D" uid="uid://ckgkijy3bsi2e" path="res://assets/sprites/pickup_sanity.png" id="3_jc6o3"]
 [ext_resource type="AudioStream" uid="uid://d4fdjhymtogns" path="res://assets/sounds/pickup.mp3" id="3_jc6o3"]
+[ext_resource type="Texture2D" uid="uid://ckgkijy3bsi2e" path="res://assets/sprites/pickup_sanity.png" id="3_nscs2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc6o3"]
 size = Vector2(45.875, 45.25)
@@ -140,7 +140,7 @@ texture = SubResource("GradientTexture2D_agqce")
 material = SubResource("CanvasItemMaterial_f6qnh")
 amount = 17
 texture = ExtResource("2_jc6o3")
-lifetime = 2.2399999999999998
+lifetime = 2.24
 process_material = SubResource("ParticleProcessMaterial_grgo1")
 
 [node name="soft_glow" type="Sprite2D" parent="." unique_id=1789447152]
@@ -150,7 +150,7 @@ texture = SubResource("GradientTexture2D_ul8py")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=105472520]
 material = SubResource("CanvasItemMaterial_kiqh3")
 position = Vector2(0, -7)
-texture = ExtResource("3_jc6o3")
+texture = ExtResource("3_nscs2")
 
 [node name="DespawnTimer" type="Timer" parent="." unique_id=1995697903]
 wait_time = 60.0

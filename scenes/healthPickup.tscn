@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mg7i31jwduty" path="res://assets/scripts/health_pickup.gd" id="1_sps0i"]
 [ext_resource type="Texture2D" uid="uid://ccmyix4i47aku" path="res://assets/sprites/pickup_health.png" id="2_sps0i"]
-[ext_resource type="Texture2D" uid="uid://cmde64l2ffhy4" path="res://assets/sprites/leaves.png" id="3_p625y"]
+[ext_resource type="Texture2D" uid="uid://cmde64l2ffhy4" path="res://assets/sprites/leaves.png" id="2_t8rnq"]
 [ext_resource type="AudioStream" uid="uid://d4fdjhymtogns" path="res://assets/sounds/pickup.mp3" id="3_p625y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
@@ -139,8 +139,8 @@ texture = SubResource("GradientTexture2D_0stcx")
 [node name="leaves_particles" type="GPUParticles2D" parent="." unique_id=2147023868]
 material = SubResource("CanvasItemMaterial_qpmlx")
 amount = 17
-texture = ExtResource("3_p625y")
-lifetime = 2.2399999999999998
+texture = ExtResource("2_t8rnq")
+lifetime = 2.24
 process_material = SubResource("ParticleProcessMaterial_la611")
 
 [node name="soft_glow" type="Sprite2D" parent="." unique_id=509088862]
