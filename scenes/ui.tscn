@@ -2,6 +2,56 @@
 
 [ext_resource type="Script" uid="uid://co2otlmsne3pf" path="res://assets/scripts/sanity_bar.gd" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://c8ogi3fq4tje3" path="res://assets/scripts/health_bar.gd" id="2_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://bhpkgaljdmrk2" path="res://assets/sprites/ui_overlay.png" id="3_yev5y"]
+[ext_resource type="Texture2D" uid="uid://ddxlas7f31rp2" path="res://assets/sprites/ui_player_mask.png" id="4_gdt2y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdt2y"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm3ai"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dubc"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+skew = Vector2(2.5, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7vwb"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 0.4)
+skew = Vector2(2.5, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [node name="UI" type="Control" unique_id=87986574]
 layout_mode = 3
@@ -9,20 +59,34 @@ anchors_preset = 0
 
 [node name="SanityBar" type="ProgressBar" parent="." unique_id=229974149]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 114.0
-offset_right = 56.0
-offset_bottom = 444.0
+offset_left = 91.0
+offset_top = 171.0
+offset_right = 130.0
+offset_bottom = 740.0
 theme_override_colors/font_color = Color(14.948135, 18.892157, 18.892157, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_gdt2y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wm3ai")
 value = 100.0
 fill_mode = 3
 script = ExtResource("1_nt7q6")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1637838547]
 layout_mode = 0
-offset_left = 250.0
-offset_top = 30.0
-offset_right = 945.0
-offset_bottom = 68.0
+offset_left = 174.0
+offset_top = 58.0
+offset_right = 842.0
+offset_bottom = 118.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8dubc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p7vwb")
 value = 100.0
 script = ExtResource("2_x4jx1")
+
+[node name="ui_overlay" type="Sprite2D" parent="." unique_id=631825783]
+texture = ExtResource("3_yev5y")
+centered = false
+
+[node name="player_mask" type="Sprite2D" parent="." unique_id=535193621]
+position = Vector2(114, 132)
+texture = ExtResource("4_gdt2y")
+hframes = 5
+frame = 1
