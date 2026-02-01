@@ -4,7 +4,7 @@ extends EnemyBase
 const SPEED = 200.0
 # radius at which the enemy circles the player
 const RADIUS = 200
-const LIFE_TIME = 30
+const LIFE_TIME = 20
 
 @export var strength: int = 5
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D

@@ -5,8 +5,8 @@ extends Node2D
 @export var roamerEnemy: PackedScene
 @export var teleportationEnemy: PackedScene
 
-const NEAR_PLAYER_SPAWN_MIN_RANGE = 1000
-const NEAR_PLAYER_SPAWN_MAX_RANGE = 2000
+const NEAR_PLAYER_SPAWN_MIN_RANGE = 800
+const NEAR_PLAYER_SPAWN_MAX_RANGE = 1200
 const EXIT_SPAWN_MIN_DISTANCE = 300
 const EXIT_SPAWN_MAX_DISTANCE = 800
 var rng = RandomNumberGenerator.new()
