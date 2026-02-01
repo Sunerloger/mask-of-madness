@@ -63,6 +63,8 @@ func _physics_process(delta: float) -> void:
 		get_tree().change_scene_to_file("res://scenes/deathScreen.tscn")
 
 func isNearExit() -> bool:
+	if(!exit):
+		return false
 	return global_position.distance_to(exit.global_position) < NEAR_EXIT_DISTANCE
 
 # if value is set to 1 the angle is 45°
