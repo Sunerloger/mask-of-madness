@@ -7,6 +7,10 @@ const ZIGZAG_MIN_DISTANCE = 200
 const ZIGZAG_ROTATION_ANGLE = 0.7
 var ZIGZAG_DIRECTION = 1
 @export var strength: int = 3
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+func _ready() -> void:
+	animated_sprite_2d.material.light_mode = 2
 
 func _physics_process(delta: float) -> void:
 	if(playerIsLooking()):
