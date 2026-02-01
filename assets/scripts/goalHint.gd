@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 
 	# Get viewport size
 	var viewport_size = get_viewport_rect().size
-
 	var half_size = viewport_size * 0.5
 	var target_screen_pos = half_size + direction * (half_size - Vector2(edge_margin, edge_margin))
 
