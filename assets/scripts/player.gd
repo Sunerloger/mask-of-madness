@@ -10,6 +10,9 @@ var elapsed := 0.0
 var start_scale_y := 1.0
 var facing_direction: Vector2
 
+const min_light_cone_scale = 0.5
+const max_light_cone_scale = 1.5
+
 @onready var lightCone := $PointLight2D
 @onready var health := $Health
 @onready var sanity := $Sanity
@@ -59,3 +62,7 @@ func _physics_process(delta: float) -> void:
 
 func isNearExit() -> bool:
 	return global_position.distance_to(exit.global_position) < NEAR_EXIT_DISTANCE
+
+# if value is set to 1 the angle is 45°
+func setConeScale(value:float) -> void:
+	lightCone.scale.y = value

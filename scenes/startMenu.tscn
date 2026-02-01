@@ -145,4 +145,5 @@ vertical_alignment = 1
 environment = SubResource("Environment_8fwge")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
