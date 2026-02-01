@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dylyjaypwfgfm"]
+[gd_scene format=3 uid="uid://c3qwsnj3dbn4y"]
 
 [ext_resource type="AudioStream" uid="uid://d1edgf2i3cact" path="res://assets/sounds/sanity_1.mp3" id="1_172es"]
 [ext_resource type="Script" uid="uid://ck1dyolpe6fog" path="res://scenes/menu_music.gd" id="1_qem5d"]

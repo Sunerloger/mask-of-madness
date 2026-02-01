@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://coothyfft2ybi"]
+
+[ext_resource type="Script" uid="uid://ck1dyolpe6fog" path="res://scenes/menu_music.gd" id="1_puqpj"]
+[ext_resource type="AudioStream" uid="uid://d1edgf2i3cact" path="res://assets/sounds/sanity_1.mp3" id="2_2cd5b"]
+
+[node name="MenuMusic" type="Control" unique_id=2094740574]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_puqpj")
+
+[node name="Ambiance1" type="AudioStreamPlayer" parent="." unique_id=1325487907]
+stream = ExtResource("2_2cd5b")
+volume_db = -5.0
+autoplay = true
