@@ -13,6 +13,7 @@ var facing_direction: Vector2
 const min_light_cone_scale = 0.5
 const max_light_cone_scale = 1.5
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var lightCone := $PointLight2D
 @onready var health := $Health
 @onready var sanity := $Sanity
@@ -42,6 +43,9 @@ func _physics_process(delta: float) -> void:
 	
 	var input_dir := Vector2(Input.get_axis("Left", "Right"),Input.get_axis("Up", "Down"))
 	if input_dir:
+		if not audio_stream_player_2d.playing:
+			audio_stream_player_2d.play()
+			
 		leaves_particles.emitting = true
 		dust_particles.emitting = true
 		velocity = input_dir * SPEED
@@ -52,6 +56,9 @@ func _physics_process(delta: float) -> void:
 			sprite_2d.flip_h = false
 			player_shadow.offset.x = -10
 	else:
+		if audio_stream_player_2d.playing:
+			audio_stream_player_2d.stop()
+		
 		leaves_particles.emitting = false
 		dust_particles.emitting = false
 	

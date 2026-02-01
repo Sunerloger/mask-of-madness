@@ -9,7 +9,7 @@ extends Node2D
 }
 
 @export var fade_time := 2.0
-@export var target_db := -5
+@export var target_db := -15
 @export var silent_db := -80.0
 
 @onready var ambiance_1: AudioStreamPlayer = $Ambiance1
