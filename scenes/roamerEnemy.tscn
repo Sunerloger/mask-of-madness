@@ -1,18 +1,56 @@
 [gd_scene format=3 uid="uid://daj7u563usssc"]
 
 [ext_resource type="Script" uid="uid://bf1kwi27rlutx" path="res://assets/scripts/roamerEnemy.gd" id="1_1gyx3"]
-[ext_resource type="Texture2D" uid="uid://p647bojs85kq" path="res://assets/sprites/temp_enemy_tex.tres" id="2_ojp5j"]
-[ext_resource type="AudioStream" uid="uid://ci7e13n3sw4n3" path="res://assets/sounds/crow_standin.mp3" id="3_vkedb"]
-[ext_resource type="Script" uid="uid://b8l21ug62igo2" path="res://assets/scripts/floater_audio.gd" id="4_vk80v"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hpcfp"]
-light_mode = 2
+[ext_resource type="Texture2D" uid="uid://bgyr7vejpxskd" path="res://assets/sprites/crow.png" id="2_hpcfp"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ojp5j"]
 cull_mode = 1
-polygon = PackedVector2Array(0, -602.5542, -12.632017, -473.43542, -21.053362, -301.2771, -23.579765, -64.55938, -22.73763, 172.15834, -19.369093, 387.35626, -10.947748, 581.0344, 0, 688.63336)
+polygon = PackedVector2Array(8.421345, 0, 5.052807, -107.59896, -0.8421345, -129.11876, -5.052807, -107.59896, -8.421345, 21.519793, -7.5792103, 193.67813, 0, 301.2771, 7.5792103, 215.19792)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snias"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkedb"]
+atlas = ExtResource("2_hpcfp")
+region = Rect2(0, 0, 96, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk80v"]
+atlas = ExtResource("2_hpcfp")
+region = Rect2(96, 0, 96, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nemo"]
+atlas = ExtResource("2_hpcfp")
+region = Rect2(192, 0, 96, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52330"]
+atlas = ExtResource("2_hpcfp")
+region = Rect2(288, 0, 96, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvt82"]
+atlas = ExtResource("2_hpcfp")
+region = Rect2(384, 0, 96, 76)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdxvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkedb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk80v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nemo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52330")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvt82")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="roamerEnemy" type="CharacterBody2D" unique_id=549486802]
 scale = Vector2(1.00441, 1)
@@ -20,25 +58,16 @@ collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_1gyx3")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=849365580]
-material = SubResource("CanvasItemMaterial_hpcfp")
-scale = Vector2(1.3461419, 1.3461419)
-texture = ExtResource("2_ojp5j")
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=2111847193]
 z_index = -2
 scale = Vector2(1.182245, 0.046468846)
 occluder = SubResource("OccluderPolygon2D_ojp5j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032296548]
+visible = false
 scale = Vector2(3.8672519, 3.8672512)
 shape = SubResource("CircleShape2D_snias")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=563141640]
-stream = ExtResource("3_vkedb")
-volume_db = -5.0
-autoplay = true
-attenuation = 3.0314326
-script = ExtResource("4_vk80v")
-
-[connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_finished"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1268258353]
+sprite_frames = SubResource("SpriteFrames_sdxvu")
+autoplay = "default"
