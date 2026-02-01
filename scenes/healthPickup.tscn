@@ -1,13 +1,124 @@
 [gd_scene format=3 uid="uid://bmh3ymoo0agao"]
 
 [ext_resource type="Script" uid="uid://mg7i31jwduty" path="res://assets/scripts/health_pickup.gd" id="1_sps0i"]
-[ext_resource type="Texture2D" uid="uid://cb0e6vgpl6fbo" path="res://assets/sprites/icon.svg" id="2_p625y"]
+[ext_resource type="Texture2D" uid="uid://ccmyix4i47aku" path="res://assets/sprites/pickup_health.png" id="2_sps0i"]
+[ext_resource type="Texture2D" uid="uid://cmde64l2ffhy4" path="res://assets/sprites/leaves.png" id="3_p625y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(45.875, 45.25)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p625y"]
+
+[sub_resource type="Gradient" id="Gradient_p625y"]
+offsets = PackedFloat32Array(0, 0.56626505)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0stcx"]
+gradient = SubResource("Gradient_p625y")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qpmlx"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_k8ey4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.51506853, 0.9373661), 0.0, 0.0, 0, 0, Vector2(0.9917809, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t8rnq"]
+curve = SubResource("Curve_k8ey4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_la611"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(14, 10.145, 1)
+angle_min = -64.69999
+angle_max = 40.400013
+gravity = Vector3(0, -40, 0)
+linear_accel_min = -21.250002
+linear_accel_max = 35.979996
+scale_min = 1.3
+scale_max = 1.5
+alpha_curve = SubResource("CurveTexture_t8rnq")
+anim_speed_min = 0.9
+anim_speed_max = 0.9
+
+[sub_resource type="Gradient" id="Gradient_0stcx"]
+offsets = PackedFloat32Array(0, 0.5770235)
+colors = PackedColorArray(1, 1, 1, 0.16862746, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t8rnq"]
+gradient = SubResource("Gradient_0stcx")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sps0i"]
-light_mode = 2
+
+[sub_resource type="Animation" id="Animation_fpbny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("soft_glow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j00j4"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("soft_glow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 0.5, 1, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_grf1e"]
+_data = {
+&"RESET": SubResource("Animation_fpbny"),
+&"new_animation": SubResource("Animation_j00j4")
+}
 
 [node name="HealthPickup" type="Area2D" unique_id=707575940]
 collision_layer = 16
@@ -15,17 +126,39 @@ collision_mask = 2
 script = ExtResource("1_sps0i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=105963796]
+visible = false
 shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=359400715]
+material = SubResource("CanvasItemMaterial_p625y")
+position = Vector2(0, 5.5)
+scale = Vector2(1, 0.453125)
+texture = SubResource("GradientTexture2D_0stcx")
+
+[node name="leaves_particles" type="GPUParticles2D" parent="." unique_id=2147023868]
+material = SubResource("CanvasItemMaterial_qpmlx")
+amount = 17
+texture = ExtResource("3_p625y")
+lifetime = 2.2399999999999998
+process_material = SubResource("ParticleProcessMaterial_la611")
+
+[node name="soft_glow" type="Sprite2D" parent="." unique_id=509088862]
+position = Vector2(0, -17)
+texture = SubResource("GradientTexture2D_t8rnq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1592054348]
 material = SubResource("CanvasItemMaterial_sps0i")
-scale = Vector2(0.40625, 0.40625)
-texture = ExtResource("2_p625y")
+position = Vector2(0, -7)
+texture = ExtResource("2_sps0i")
 
 [node name="DespawnTimer" type="Timer" parent="." unique_id=1102741404]
 wait_time = 60.0
 one_shot = true
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=505023532]
+libraries/ = SubResource("AnimationLibrary_grf1e")
+autoplay = &"new_animation"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
