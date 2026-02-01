@@ -28,6 +28,19 @@ func _ready() -> void:
 	dust_particles.emitting = false
 
 
+func fade_out_audio(duration := 1.0) -> void:
+	if not audio_stream_player_2d.playing:
+		return
+
+	var t := create_tween()
+	t.tween_property(audio_stream_player_2d, "volume_db", -50.0, duration)
+	t.finished.connect(
+		func():
+			audio_stream_player_2d.stop()
+			audio_stream_player_2d.volume_db = 0.0 # reset for next play
+	)
+
+
 func _physics_process(delta: float) -> void:
 	facing_direction = (get_global_mouse_position() - global_position).normalized()
 	
@@ -57,7 +70,7 @@ func _physics_process(delta: float) -> void:
 			player_shadow.offset.x = -10
 	else:
 		if audio_stream_player_2d.playing:
-			audio_stream_player_2d.stop()
+			fade_out_audio()
 		
 		leaves_particles.emitting = false
 		dust_particles.emitting = false
