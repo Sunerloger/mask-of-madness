@@ -13,6 +13,7 @@ var facing_direction: Vector2
 const min_light_cone_scale = 0.5
 const max_light_cone_scale = 1.5
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var lightCone := $PointLight2D
 @onready var health := $Health
 @onready var sanity := $Sanity
@@ -25,6 +26,19 @@ const max_light_cone_scale = 1.5
 func _ready() -> void:
 	leaves_particles.emitting = false
 	dust_particles.emitting = false
+
+
+func fade_out_audio(duration := 1.0) -> void:
+	if not audio_stream_player_2d.playing:
+		return
+
+	var t := create_tween()
+	t.tween_property(audio_stream_player_2d, "volume_db", -50.0, duration)
+	t.finished.connect(
+		func():
+			audio_stream_player_2d.stop()
+			audio_stream_player_2d.volume_db = 0.0 # reset for next play
+	)
 
 
 func _physics_process(delta: float) -> void:
@@ -42,6 +56,9 @@ func _physics_process(delta: float) -> void:
 	
 	var input_dir := Vector2(Input.get_axis("Left", "Right"),Input.get_axis("Up", "Down"))
 	if input_dir:
+		if not audio_stream_player_2d.playing:
+			audio_stream_player_2d.play()
+			
 		leaves_particles.emitting = true
 		dust_particles.emitting = true
 		velocity = input_dir * SPEED
@@ -52,6 +69,9 @@ func _physics_process(delta: float) -> void:
 			sprite_2d.flip_h = false
 			player_shadow.offset.x = -10
 	else:
+		if audio_stream_player_2d.playing:
+			fade_out_audio()
+		
 		leaves_particles.emitting = false
 		dust_particles.emitting = false
 	
