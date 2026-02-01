@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ckoglvcvqgaqs"]
 
 [ext_resource type="Script" uid="uid://dmaedpif5w0s3" path="res://assets/scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://6ldqmoid8wip" path="res://assets/sprites/player_spritesheet.png" id="2_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://bs3xkvcih0trc" path="res://assets/sprites/player.png" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://c66indogca2y0" path="res://assets/sprites/conev_colorized.png" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
@@ -74,6 +75,40 @@ alpha_curve = SubResource("CurveTexture_jbj1t")
 anim_speed_min = 0.9
 anim_speed_max = 0.9
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("2_d2wvv")
+region = Rect2(0, 0, 242, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("2_d2wvv")
+region = Rect2(242, 0, 242, 242)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("2_d2wvv")
+region = Rect2(0, 242, 242, 242)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1ej7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}],
+"loop": true,
+"name": &"run",
+"speed": 4.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=68192137 groups=["player"]]
 collision_layer = 2
 collision_mask = 9
@@ -88,6 +123,7 @@ scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_ur7pv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=624848177]
+visible = false
 texture = ExtResource("2_tuyoq")
 offset = Vector2(0, -60)
 flip_h = true
@@ -148,6 +184,12 @@ process_material = SubResource("ParticleProcessMaterial_f1ej7")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2086831691]
 stream = ExtResource("9_ur7pv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=139588962]
+sprite_frames = SubResource("SpriteFrames_f1ej7")
+animation = &"run"
+autoplay = "idle"
+offset = Vector2(0, -60)
 
 [connection signal="timeout" from="Sanity/Timer" to="Sanity" method="_on_timer_timeout"]
 [connection signal="body_entered" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_body_entered"]

@@ -24,6 +24,7 @@ const max_light_cone_scale = 1.5
 @onready var leaves_particles: GPUParticles2D = $leaves_particles
 @onready var dust_particles: GPUParticles2D = $dust_particles
 @onready var player_shadow: Sprite2D = $player_shadow
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	leaves_particles.emitting = false
@@ -58,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	
 	var input_dir := Vector2(Input.get_axis("Left", "Right"),Input.get_axis("Up", "Down"))
 	if input_dir:
+		animated_sprite_2d.play("run")
 		if not audio_stream_player_2d.playing:
 			audio_stream_player_2d.play()
 			
@@ -65,12 +67,13 @@ func _physics_process(delta: float) -> void:
 		dust_particles.emitting = true
 		velocity = input_dir * SPEED
 		if input_dir.x < 0:
-			sprite_2d.flip_h = true
+			animated_sprite_2d.flip_h = true
 			player_shadow.offset.x = 10
 		elif input_dir.x > 0:
-			sprite_2d.flip_h = false
+			animated_sprite_2d.flip_h = false
 			player_shadow.offset.x = -10
 	else:
+		animated_sprite_2d.play("idle")
 		if audio_stream_player_2d.playing:
 			fade_out_audio()
 		
