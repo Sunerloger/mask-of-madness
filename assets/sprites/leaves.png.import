@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c66indogca2y0"
-path="res://.godot/imported/conev_colorized.png-a4ddb6d5259d6b6b7d17fd1e77c1c124.ctex"
+uid="uid://cmde64l2ffhy4"
+path="res://.godot/imported/leaves.png-d00ccddd4d28e51aa7a2720415d473d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/conev_colorized.png"
-dest_files=["res://.godot/imported/conev_colorized.png-a4ddb6d5259d6b6b7d17fd1e77c1c124.ctex"]
+source_file="res://assets/sprites/leaves.png"
+dest_files=["res://.godot/imported/leaves.png-d00ccddd4d28e51aa7a2720415d473d7.ctex"]
 
 [params]
 

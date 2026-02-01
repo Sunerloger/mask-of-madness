@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c66indogca2y0"
-path="res://.godot/imported/conev_colorized.png-a4ddb6d5259d6b6b7d17fd1e77c1c124.ctex"
+uid="uid://c4nf0xkav8icj"
+path="res://.godot/imported/dust02.png-1ad4bd42d36a218365b6fc30f29756e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/conev_colorized.png"
-dest_files=["res://.godot/imported/conev_colorized.png-a4ddb6d5259d6b6b7d17fd1e77c1c124.ctex"]
+source_file="res://assets/sprites/dust02.png"
+dest_files=["res://.godot/imported/dust02.png-1ad4bd42d36a218365b6fc30f29756e9.ctex"]
 
 [params]
 
