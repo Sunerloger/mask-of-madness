@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jnra64qpi14s"]
 
-[ext_resource type="Script" uid="uid://dsn11qqi3sw3j" path="res://assets/scripts/level_exit.gd" id="1_7lhay"]
+[ext_resource type="Script" path="res://assets/scripts/level_exit.gd" id="1_7lhay"]
 [ext_resource type="Texture2D" uid="uid://1mjojrstpiel" path="res://assets/sprites/exit.png" id="2_7lhay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lhay"]
