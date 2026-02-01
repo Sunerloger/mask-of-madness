@@ -2,10 +2,23 @@
 
 [ext_resource type="Script" uid="uid://bh2i11u6v0wry" path="res://assets/scripts/victoryScene.gd" id="1_03u3s"]
 [ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="1_ppghm"]
+[ext_resource type="Shader" uid="uid://chai7bgsgg0us" path="res://shaders/post_processing_effects/canvas_item/glitch_shader.gdshader" id="2_1va6s"]
 [ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="2_e22nn"]
 [ext_resource type="Texture2D" uid="uid://dl160p1s76qwk" path="res://assets/textures/black-glitch-effect-texture.jpg" id="4_aelo8"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aelo8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb10i"]
+shader = ExtResource("2_1va6s")
+shader_parameter/glitch_chance = 0.2
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_density = 14.0
+shader_parameter/slice_strength = 0.38
+shader_parameter/shake_strength = 0.02
+shader_parameter/chroma_offset = 0.016
+shader_parameter/noise_strength = 0.2
+shader_parameter/color_flash_strength = 0.4
+shader_parameter/scanline_strength = 0.18
+shader_parameter/local_warp_strength = 0.14
+shader_parameter/flip_chance = 0.15
 
 [sub_resource type="LabelSettings" id="LabelSettings_e22nn"]
 font = ExtResource("1_ppghm")
@@ -16,6 +29,11 @@ shadow_color = Color(0, 0, 0, 0.7529412)
 [sub_resource type="LabelSettings" id="LabelSettings_ppghm"]
 font = ExtResource("2_e22nn")
 font_size = 63
+
+[sub_resource type="Environment" id="Environment_alq1q"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_saturation = 0.0
 
 [node name="VictoryScene" type="Control" unique_id=1033061261]
 layout_mode = 3
@@ -35,8 +53,8 @@ offset_right = 1920.0
 offset_bottom = 1078.0
 color = Color(0.05490196, 0.007843138, 0.007843138, 1)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=386391066]
-material = SubResource("CanvasItemMaterial_aelo8")
+[node name="Background texture" type="TextureRect" parent="." unique_id=1194550656]
+material = SubResource("ShaderMaterial_eb10i")
 layout_mode = 0
 offset_left = 4.0
 offset_top = -2.0
@@ -87,6 +105,9 @@ text = "MENU"
 label_settings = SubResource("LabelSettings_ppghm")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1746712549]
+environment = SubResource("Environment_alq1q")
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
