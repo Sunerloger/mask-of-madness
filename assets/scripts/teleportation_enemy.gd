@@ -2,6 +2,7 @@ extends EnemyBase
 
 var SPEED = 30.0
 const MOVE_SPEED = 30
+const LIFE_TIME = 40
 const TP_DISTANCE = 150
 const ZIGZAG_MIN_DISTANCE = 200
 const ZIGZAG_ROTATION_ANGLE = 0.7
@@ -13,7 +14,7 @@ func _ready() -> void:
 	animated_sprite_2d.material.light_mode = 2
 
 func _physics_process(delta: float) -> void:
-	if(playerIsLooking()):
+	if(player.isLookingAt(global_position)):
 		SPEED = 0
 	else:
 		SPEED = MOVE_SPEED
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 
 # Teleportation timer
 func _on_timer_timeout():
-	if(playerIsLooking()):
+	if(player.isLookingAt(global_position)):
 		return
 	var direction = getDirectionToPlayer()
 	if(isFarFromPlayer()): # stop zig zaging when really close to player 
@@ -37,6 +38,9 @@ func _on_timer_timeout():
 	
 func get_strength():
 	return strength
+	
+func get_life_time():
+	return LIFE_TIME
 
 func teleport(tp_vector):
 	global_position += tp_vector

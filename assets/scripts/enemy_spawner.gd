@@ -5,12 +5,10 @@ extends Node2D
 @export var roamerEnemy: PackedScene
 @export var teleportationEnemy: PackedScene
 
-const NEAR_PLAYER_SPAWN_MIN_RANGE = 400
-const NEAR_PLAYER_SPAWN_MAX_RANGE = 1800
+const NEAR_PLAYER_SPAWN_MIN_RANGE = 1000
+const NEAR_PLAYER_SPAWN_MAX_RANGE = 2000
 const EXIT_SPAWN_MIN_DISTANCE = 300
-const EXIT_SPAWN_MAX_DISTANCE = 600
-var enemies := []
-var max_enemies := 7
+const EXIT_SPAWN_MAX_DISTANCE = 800
 var rng = RandomNumberGenerator.new()
 
 
@@ -25,9 +23,6 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if !shouldSpawn():
-		# print("Spawner: should not spawn (max enemies)")
-		return
 	spawnEnemy(getRandomEnemyType())
 	
 func getRandomEnemyType() -> PackedScene:
@@ -38,27 +33,28 @@ func getRandomEnemyType() -> PackedScene:
 		_:
 			return teleportationEnemy
 	
-func shouldSpawn() -> bool:
-	return enemies.size() < max_enemies
-	
 func spawnEnemy(enemyType: PackedScene) -> void:
 	if !enemyType: # checks if packedScene is null
 		print("ERROR in Spawner: packedScene is null")
 		return
+	var enemies_container = get_node("Enemies")
+	if !enemies_container:
+		print("ERROR in Spawner: enemies_container is null")
+		return
 	var enemy = enemyType.instantiate()
 	var spawn_position = findSpawnPosition()
 	print("Spawner: Spawning at (%d, %d) of type %s" % [spawn_position.x, spawn_position.y, enemyType.to_string()])
-	get_parent().get_parent().get_node("Enemies").add_child(enemy)
+	enemies_container.add_child(enemy)
 	enemy.global_position = spawn_position
-	enemies.append(enemy)
 
 func findSpawnPosition():
-	if(player.isNearExit()):
-		print("Player is near exit. Spawn pos near player")
-		return getSpawnPositionNearPlayer()
-	else:
-		print("Player is far from exit. Spawn pos near exit")
-		return getSpawnPositionNearExit()
+	return getSpawnPositionNearPlayer()
+	#if(player.isNearExit()):
+	#	print("Player is near exit. Spawn pos near player")
+	#	return getSpawnPositionNearPlayer()
+	#else:
+	#	print("Player is far from exit. Spawn pos near exit")
+	#	return getSpawnPositionNearExit()
 	
 func getSpawnPositionNearPlayer():
 	return getSpawnPositionNearPoint(player.global_position, NEAR_PLAYER_SPAWN_MIN_RANGE, NEAR_PLAYER_SPAWN_MAX_RANGE)

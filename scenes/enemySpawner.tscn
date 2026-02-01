@@ -10,7 +10,10 @@ roamerEnemy = ExtResource("2_lox8h")
 teleportationEnemy = ExtResource("3_tq322")
 
 [node name="Timer" type="Timer" parent="." unique_id=77023679]
-wait_time = 3.0
+wait_time = 1.66
 autostart = true
+
+[node name="Enemies" type="Node2D" parent="." unique_id=43375540 groups=["enemies"]]
+position = Vector2(905, 501)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

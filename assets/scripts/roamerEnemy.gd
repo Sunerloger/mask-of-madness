@@ -4,6 +4,7 @@ extends EnemyBase
 const SPEED = 200.0
 # radius at which the enemy circles the player
 const RADIUS = 200
+const LIFE_TIME = 30
 
 @export var strength: int = 5
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 
 	var move_dir: Vector2
 
-	if playerIsLooking():
+	if player.isLookingAt(global_position):
 		# Orbit + push back to radius
 		var radius_error = getDistanceToPlayer() - RADIUS
 		move_dir = circle_dir + dir_to_player * clamp(radius_error / RADIUS, -1.0, 1.0)
@@ -44,3 +45,6 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = true
 	elif global_position.x > player.global_position.x:
 		animated_sprite_2d.flip_h = false
+
+func get_life_time():
+	return LIFE_TIME

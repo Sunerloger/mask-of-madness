@@ -154,7 +154,7 @@ offset_top = 629.0
 offset_right = 502.0
 offset_bottom = 654.0
 scale = Vector2(2.53, 2.53)
-min_value = -80.0
+min_value = -25.0
 max_value = 0.0
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
