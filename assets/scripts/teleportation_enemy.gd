@@ -2,6 +2,7 @@ extends EnemyBase
 
 var SPEED = 30.0
 const MOVE_SPEED = 30
+const LIFE_TIME = 20
 const TP_DISTANCE = 150
 const ZIGZAG_MIN_DISTANCE = 200
 const ZIGZAG_ROTATION_ANGLE = 0.7
@@ -29,6 +30,9 @@ func _on_timer_timeout():
 	
 func get_strength():
 	return strength
+	
+func get_life_time():
+	return LIFE_TIME
 
 func teleport(tp_vector):
 	global_position += tp_vector

@@ -4,6 +4,7 @@ extends EnemyBase
 const SPEED = 200.0
 # radius at which the enemy circles the player
 const RADIUS = 200
+const LIFE_TIME = 20
 
 @export var strength: int = 5
 
@@ -37,3 +38,6 @@ func _physics_process(delta: float) -> void:
 
 	# Face movement direction
 	look_at(player.global_position)
+
+func get_life_time():
+	return LIFE_TIME
