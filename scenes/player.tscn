@@ -2,16 +2,75 @@
 
 [ext_resource type="Script" uid="uid://dmaedpif5w0s3" path="res://assets/scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bs3xkvcih0trc" path="res://assets/sprites/player.png" id="2_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://dfxlbth5qcvoc" path="res://assets/sprites/conev2.png" id="3_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://dyrqyfnrb8jc5" path="res://assets/sprites/conev_colorized.png" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://assets/scripts/sanity.gd" id="4_qlg0r"]
-[ext_resource type="Script" path="res://assets/scripts/player_hurt_box.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://gsk8kp7kskb1" path="res://assets/scripts/player_hurt_box.gd" id="6_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://dhrdb481y62n6" path="res://assets/sprites/leaves.png" id="7_smehm"]
+[ext_resource type="Texture2D" uid="uid://ckvfkvqwsanid" path="res://assets/sprites/dust02.png" id="8_ur7pv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 34.132095
 
+[sub_resource type="Gradient" id="Gradient_smehm"]
+offsets = PackedFloat32Array(0, 0.19387755, 0.5127551)
+colors = PackedColorArray(0, 0, 0, 0.35686275, 0, 0, 0, 0.1474978, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ur7pv"]
+gradient = SubResource("Gradient_smehm")
+width = 123
+height = 51
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlg0r"]
 radius = 38.832977
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y4r1p"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d2wvv"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(26.365, 10.145, 1)
+angle_min = -64.69999
+angle_max = 40.400013
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.9
+anim_speed_max = 0.9
+
+[sub_resource type="Curve" id="Curve_3v2ag"]
+_data = [Vector2(0, 0), 0.0, 6.7025123, 0, 0, Vector2(0.056149732, 0.14099908), 0.0, 0.0, 0, 0, Vector2(0.17914438, 0.12747145), -0.31620696, -0.31620696, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jbj1t"]
+curve = SubResource("Curve_3v2ag")
+
+[sub_resource type="Curve" id="Curve_jej6c"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 1.3813734), 0.0, 29.813807, 0, 0, Vector2(0.14973262, 3.2414148), 0.0, 0.0, 0, 0, Vector2(1, 0.32778358), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_muem4"]
+curve = SubResource("Curve_jej6c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1ej7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(26.365, 10.145, 1)
+angle_min = -64.69999
+angle_max = 40.400013
+gravity = Vector3(0, -30, 0)
+linear_accel_min = -21.350002
+linear_accel_max = -20.220001
+scale_curve = SubResource("CurveTexture_muem4")
+color = Color(0.69965345, 0.69965345, 0.69965345, 1)
+alpha_curve = SubResource("CurveTexture_jbj1t")
+anim_speed_min = 0.9
+anim_speed_max = 0.9
 
 [node name="Player" type="CharacterBody2D" unique_id=68192137 groups=["player"]]
 collision_layer = 2
@@ -19,7 +78,12 @@ collision_mask = 9
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086097468 groups=["player"]]
+visible = false
 shape = SubResource("CircleShape2D_onrkg")
+
+[node name="player_shadow" type="Sprite2D" parent="." unique_id=1548756612]
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_ur7pv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=624848177]
 texture = ExtResource("2_tuyoq")
@@ -27,15 +91,6 @@ offset = Vector2(0, -60)
 flip_h = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1077787437]
-blend_mode = 2
-shadow_enabled = true
-shadow_filter = 1
-shadow_filter_smooth = 2.0
-texture = ExtResource("3_tuyoq")
-offset = Vector2(900, 0)
-texture_scale = 0.8
-
-[node name="PointLight2D" type="PointLight2D" parent="PointLight2D" unique_id=92554038]
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 2.0
@@ -58,6 +113,7 @@ collision_mask = 31
 script = ExtResource("6_tuyoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox" unique_id=301791299 groups=["player"]]
+visible = false
 shape = SubResource("CircleShape2D_qlg0r")
 
 [node name="InvulnTimer" type="Timer" parent="PlayerHurtBox" unique_id=2070237220]
@@ -66,6 +122,20 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=432396695]
 position_smoothing_enabled = true
+
+[node name="leaves_particles" type="GPUParticles2D" parent="." unique_id=1273021950]
+material = SubResource("CanvasItemMaterial_y4r1p")
+texture = ExtResource("7_smehm")
+process_material = SubResource("ParticleProcessMaterial_d2wvv")
+
+[node name="dust_particles" type="GPUParticles2D" parent="." unique_id=13106745]
+material = SubResource("CanvasItemMaterial_y4r1p")
+position = Vector2(0, -24)
+amount = 46
+texture = ExtResource("8_ur7pv")
+lifetime = 3.0
+randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_f1ej7")
 
 [connection signal="timeout" from="Sanity/Timer" to="Sanity" method="_on_timer_timeout"]
 [connection signal="body_entered" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_body_entered"]
