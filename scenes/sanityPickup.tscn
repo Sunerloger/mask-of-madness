@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://causv5klvq26r" path="res://assets/scripts/sanity_pickup.gd" id="1_7cqbe"]
 [ext_resource type="Texture2D" uid="uid://bgyr7vejpxskd" path="res://assets/sprites/battery.png" id="2_ahnjd"]
+[ext_resource type="AudioStream" uid="uid://iff83xiyx5wr" path="res://assets/sounds/pickup_standin.mp3" id="3_jc6o3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(59, 25)
@@ -23,6 +24,9 @@ texture = ExtResource("2_ahnjd")
 wait_time = 60.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1037372034]
+stream = ExtResource("3_jc6o3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

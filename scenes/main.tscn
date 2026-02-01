@@ -12,8 +12,9 @@
 [ext_resource type="Shader" uid="uid://2wf1mrrl3qs8" path="res://shaders/post_processing_effects/canvas_item/wobble_shader.gdshader" id="10_choun"]
 [ext_resource type="Script" uid="uid://8664ji0a8snp" path="res://assets/scripts/sanity_modifier.gd" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://jnra64qpi14s" path="res://scenes/levelExit.tscn" id="12_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://ctq56rnrdf1w5" path="res://assets/sprites/world_environment_colorcorrection_gradient.tres" id="12_trceg"]
 [ext_resource type="AudioStream" uid="uid://d1edgf2i3cact" path="res://assets/sounds/sanity_1.mp3" id="13_trceg"]
-[ext_resource type="Texture2D" uid="uid://ca01v24n3wu8q" path="res://assets/sprites/world_environment_colorcorrection_gradient.tres" id="12_trceg"]
+[ext_resource type="Script" uid="uid://b0x4ws7kgox5c" path="res://assets/sounds/ambiance_switcher.gd" id="14_jkv2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trceg"]
 texture = ExtResource("2_eb6dy")
@@ -265,6 +266,18 @@ size = Vector2(13050, 6558)
 [node name="Main" type="Node2D" unique_id=1351415594]
 script = ExtResource("1_sugp2")
 
+[node name="AmbianceSwitcher" type="Node2D" parent="." unique_id=291741150]
+script = ExtResource("14_jkv2x")
+
+[node name="Ambiance1" type="AudioStreamPlayer" parent="AmbianceSwitcher" unique_id=2097863873]
+stream = ExtResource("13_trceg")
+autoplay = true
+
+[node name="Ambiance2" type="AudioStreamPlayer" parent="AmbianceSwitcher" unique_id=1970742188]
+stream = ExtResource("13_trceg")
+volume_db = -80.0
+autoplay = true
+
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1456118586]
 position = Vector2(171.2727, 187.56628)
 scale = Vector2(2.9301312, 2.9301312)
@@ -389,7 +402,3 @@ disabled = true
 
 [node name="levelExit" parent="." unique_id=1685547513 instance=ExtResource("12_eb6dy")]
 position = Vector2(6685, 3236)
-
-[node name="Ambiance" type="AudioStreamPlayer" parent="." unique_id=2097863873]
-stream = ExtResource("13_trceg")
-autoplay = true

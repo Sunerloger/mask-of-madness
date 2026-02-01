@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://dmaedpif5w0s3" path="res://assets/scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bs3xkvcih0trc" path="res://assets/sprites/player.png" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://c66indogca2y0" path="res://assets/sprites/conev_colorized.png" id="3_tuyoq"]
-[ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
+[ext_resource type="Script" path="res://assets/scripts/health.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://assets/scripts/sanity.gd" id="4_qlg0r"]
 [ext_resource type="Script" path="res://assets/scripts/player_hurt_box.gd" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cmde64l2ffhy4" path="res://assets/sprites/leaves.png" id="7_smehm"]
 [ext_resource type="Texture2D" uid="uid://c4nf0xkav8icj" path="res://assets/sprites/dust02.png" id="8_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://ow74sn7c2dq7" path="res://assets/sounds/step_1_standin.mp3" id="9_ur7pv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 34.132095
@@ -139,6 +140,10 @@ texture = ExtResource("8_ur7pv")
 lifetime = 3.0
 randomness = 0.1
 process_material = SubResource("ParticleProcessMaterial_f1ej7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2086831691]
+stream = ExtResource("9_ur7pv")
+autoplay = true
 
 [connection signal="timeout" from="Sanity/Timer" to="Sanity" method="_on_timer_timeout"]
 [connection signal="body_entered" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_body_entered"]
