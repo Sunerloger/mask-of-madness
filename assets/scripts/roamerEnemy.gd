@@ -40,4 +40,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# Face movement direction
-	look_at(player.global_position)
+	if global_position.x < player.global_position.x:
+		animated_sprite_2d.flip_h = true
+	elif global_position.x > player.global_position.x:
+		animated_sprite_2d.flip_h = false
