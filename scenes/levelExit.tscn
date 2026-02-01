@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jnra64qpi14s"]
 
-[ext_resource type="Script" path="res://assets/scripts/level_exit.gd" id="1_7lhay"]
+[ext_resource type="Script" uid="uid://dsn11qqi3sw3j" path="res://assets/scripts/level_exit.gd" id="1_7lhay"]
 [ext_resource type="Texture2D" uid="uid://djrpju6nrw8j2" path="res://assets/sprites/exit_temp.png" id="1_qllqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lhay"]
@@ -16,6 +16,6 @@ script = ExtResource("1_7lhay")
 scale = Vector2(1, 1.0166051)
 shape = SubResource("RectangleShape2D_7lhay")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=822896297]
-scale = Vector2(0.027205857, 0.027205857)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=822896297 groups=["exit"]]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_qllqk")
