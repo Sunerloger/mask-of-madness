@@ -1,12 +1,10 @@
 extends Node2D
 
-const GOAL = preload("res://scenes/levelExit.tscn")
 var occlusion_layer_id := 0
 
 @onready var rng := RandomNumberGenerator.new()
-
+@onready var goalpost := get_tree().get_first_node_in_group("exit")
 @onready var spawn_volume: Area2D = $"../../SpawnVolume"
-@onready var deadzone: Area2D = $"../../GoalDeadZone"
 @onready var tm: TileMapLayer = $"../../CanvasGroup/TileMapLayer"
 
 func _ready() -> void:
@@ -47,8 +45,6 @@ func spawn() -> void:
 	if pos == null:
 		return
 
-	var n := GOAL.instantiate() as Area2D
 	print("GOALPOS:")
 	print(pos)
-	n.global_position = pos
-	get_tree().current_scene.add_child(n)
+	goalpost.global_position = pos

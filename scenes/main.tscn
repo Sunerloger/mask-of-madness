@@ -11,6 +11,7 @@
 [ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="9_85g3d"]
 [ext_resource type="Shader" uid="uid://2wf1mrrl3qs8" path="res://shaders/post_processing_effects/canvas_item/wobble_shader.gdshader" id="10_choun"]
 [ext_resource type="Script" uid="uid://8664ji0a8snp" path="res://assets/scripts/sanity_modifier.gd" id="10_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://jnra64qpi14s" path="res://scenes/levelExit.tscn" id="12_eb6dy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trceg"]
 texture = ExtResource("2_eb6dy")
@@ -368,17 +369,12 @@ scale = Vector2(47.999996, 27)
 
 [node name="UILayer2" type="CanvasLayer" parent="." unique_id=691363350]
 
-[node name="GoalDeadZone" type="Area2D" parent="." unique_id=695612090]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDeadZone" unique_id=1872937013]
-position = Vector2(364, 176)
-scale = Vector2(0.44000077, 0.44000077)
-shape = SubResource("RectangleShape2D_85g3d")
-disabled = true
-
 [node name="SpawnVolume" type="Area2D" parent="." unique_id=1692167653]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnVolume" unique_id=224635230]
 position = Vector2(364, 176)
 shape = SubResource("RectangleShape2D_85g3d")
 disabled = true
+
+[node name="levelExit" parent="." unique_id=1685547513 instance=ExtResource("12_eb6dy")]
+position = Vector2(6685, 3236)
