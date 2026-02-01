@@ -7,15 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://0xmgy481n045" path="res://assets/conev_colorized.png" id="3_jkv2x"]
 [ext_resource type="Script" uid="uid://cfxqmqx735xh4" path="res://assets/scripts/goalHint.gd" id="4_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://chut5yo1rjwj0" path="res://scenes/sanity_pickup_spawner.tscn" id="6_o6xl0"]
-[ext_resource type="Script" path="res://assets/scripts/goal_spawner.gd" id="7_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://d2npeu8tpi7bi" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
-[ext_resource type="PackedScene" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
-
+[ext_resource type="Script" uid="uid://dkipgp48phcag" path="res://assets/scripts/goal_spawner.gd" id="7_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://bpowpx16atsxm" path="res://scenes/health_pickup_spawner.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://pixi65v4cl1x" path="res://scenes/enemySpawner.tscn" id="8_tipki"]
 [ext_resource type="TileSet" uid="uid://dhw5rgcqgrsj0" path="res://assets/tilemap/wall_tileset.tres" id="9_85g3d"]
 [ext_resource type="Shader" uid="uid://2wf1mrrl3qs8" path="res://shaders/post_processing_effects/canvas_item/wobble_shader.gdshader" id="10_choun"]
 [ext_resource type="Script" uid="uid://8664ji0a8snp" path="res://assets/scripts/sanity_modifier.gd" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://jnra64qpi14s" path="res://scenes/levelExit.tscn" id="12_eb6dy"]
-[ext_resource type="Texture2D" uid="uid://ctq56rnrdf1w5" path="res://assets/sprites/world_environment_colorcorrection_gradient.tres" id="12_trceg"]
+[ext_resource type="Texture2D" uid="uid://ca01v24n3wu8q" path="res://assets/sprites/world_environment_colorcorrection_gradient.tres" id="12_trceg"]
 [ext_resource type="AudioStream" uid="uid://d1edgf2i3cact" path="res://assets/sounds/sanity_1.mp3" id="13_trceg"]
 [ext_resource type="Script" uid="uid://b0x4ws7kgox5c" path="res://assets/scripts/ambiance_switcher.gd" id="14_jkv2x"]
 
@@ -310,9 +309,6 @@ material = SubResource("CanvasItemMaterial_jkv2x")
 position = Vector2(424, 148)
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_jbj1t")
-
-[node name="Enemies" type="Node2D" parent="." unique_id=1999643480]
-position = Vector2(905, 501)
 
 [node name="Spawnables" type="Node2D" parent="." unique_id=525800981]
 

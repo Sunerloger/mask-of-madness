@@ -8,6 +8,7 @@ var fade_speed := 0.5  # How fast it fades in (1.0 = 1 second to fully visible)
 func _ready() -> void:
 	# Make the text fully transparent at start
 	diedText.modulate.a = 0.0
+	GlobalSettings.gameStarted = false;
 
 func _process(delta: float) -> void:
 	if opacity < 1.0:

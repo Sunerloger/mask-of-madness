@@ -63,6 +63,7 @@ collision_mask = 6
 script = ExtResource("1_1gyx3")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=2111847193]
+visible = false
 z_index = -2
 scale = Vector2(1.182245, 0.046468846)
 occluder = SubResource("OccluderPolygon2D_ojp5j")
@@ -73,6 +74,7 @@ shape = SubResource("CircleShape2D_snias")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1268258353]
 material = SubResource("CanvasItemMaterial_hpcfp")
+scale = Vector2(1.398055, 1.4926023)
 sprite_frames = SubResource("SpriteFrames_sdxvu")
 autoplay = "default"
 

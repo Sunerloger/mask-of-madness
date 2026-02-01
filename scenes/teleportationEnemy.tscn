@@ -1,22 +1,75 @@
 [gd_scene format=3 uid="uid://855g3gkup8e6"]
 
 [ext_resource type="Script" uid="uid://dtalamg5w6ok7" path="res://assets/scripts/teleportation_enemy.gd" id="1_ejgg4"]
-[ext_resource type="Texture2D" uid="uid://d1ne2iqtsfush" path="res://assets/sprites/enemy.png" id="2_jf04x"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ejgg4"]
-light_mode = 2
+[ext_resource type="Texture2D" uid="uid://b4kbrnhdpwo1s" path="res://assets/sprites/hunched_enemy.png" id="2_ejgg4"]
+[ext_resource type="Texture2D" uid="uid://c4nf0xkav8icj" path="res://assets/sprites/dust02.png" id="2_jf04x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vw3a7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vw3a7"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_lkw57"]
+_data = [Vector2(0, 0), 0.0, 6.7025123, 0, 0, Vector2(0.056149732, 0.14099908), 0.0, 0.0, 0, 0, Vector2(0.17914438, 0.12747145), -0.31620696, -0.31620696, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jbj1t"]
+curve = SubResource("Curve_lkw57")
+
+[sub_resource type="Curve" id="Curve_m3wb4"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 1.3813734), 0.0, 29.813807, 0, 0, Vector2(0.14973262, 3.2414148), 0.0, 0.0, 0, 0, Vector2(1, 0.32778358), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_muem4"]
+curve = SubResource("Curve_m3wb4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0vovk"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(26.365, 10.145, 1)
+angle_min = -64.69999
+angle_max = 40.400013
+gravity = Vector3(0, -30, 0)
+linear_accel_min = -21.350002
+linear_accel_max = -20.220001
+scale_curve = SubResource("CurveTexture_muem4")
+color = Color(0.69965345, 0.69965345, 0.69965345, 1)
+alpha_curve = SubResource("CurveTexture_jbj1t")
+anim_speed_min = 0.9
+anim_speed_max = 0.9
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jf04x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw3a7"]
+atlas = ExtResource("2_ejgg4")
+region = Rect2(0, 0, 168, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkw57"]
+atlas = ExtResource("2_ejgg4")
+region = Rect2(168, 0, 168, 145)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3wb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw3a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkw57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="TeleportationEnemy" type="CharacterBody2D" unique_id=2031307927]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_ejgg4")
 metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=121867979]
-material = SubResource("CanvasItemMaterial_ejgg4")
-texture = ExtResource("2_jf04x")
-offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=14359778]
 position = Vector2(-7.15, 0)
@@ -30,5 +83,21 @@ autostart = true
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1698576779]
+
+[node name="dust_particles" type="GPUParticles2D" parent="." unique_id=838033411]
+material = SubResource("CanvasItemMaterial_vw3a7")
+position = Vector2(0, -24)
+amount = 46
+texture = ExtResource("2_jf04x")
+lifetime = 3.0
+randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_0vovk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=170997950]
+material = SubResource("CanvasItemMaterial_jf04x")
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_m3wb4")
+autoplay = "default"
+frame_progress = 0.38269466
 
 [connection signal="timeout" from="TeleportTimer" to="." method="_on_timer_timeout"]
