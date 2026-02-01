@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c66indogca2y0" path="res://assets/sprites/conev_colorized.png" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://cj28l841da8fk" path="res://assets/scripts/health.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://0wlmsj18u6vt" path="res://assets/scripts/sanity.gd" id="4_qlg0r"]
-[ext_resource type="Script" path="res://assets/scripts/player_hurt_box.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://gsk8kp7kskb1" path="res://assets/scripts/player_hurt_box.gd" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cmde64l2ffhy4" path="res://assets/sprites/leaves.png" id="7_smehm"]
 [ext_resource type="Texture2D" uid="uid://c4nf0xkav8icj" path="res://assets/sprites/dust02.png" id="8_ur7pv"]
 

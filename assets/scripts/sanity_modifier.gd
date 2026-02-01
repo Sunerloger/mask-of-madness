@@ -20,3 +20,5 @@ func _process(delta: float) -> void:
 	worldEnv.environment.adjustment_saturation = worldSaturation
 	color.r = redChannel
 	gradient.set_color(0, color)
+
+	player.setConeScale(remap(sanity, 0, 100, player.min_light_cone_scale, player.max_light_cone_scale))
