@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(45.875, 45.25)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sps0i"]
+light_mode = 2
+
 [node name="HealthPickup" type="Area2D" unique_id=707575940]
 collision_layer = 16
 collision_mask = 2
@@ -15,6 +18,7 @@ script = ExtResource("1_sps0i")
 shape = SubResource("RectangleShape2D_sugp2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1592054348]
+material = SubResource("CanvasItemMaterial_sps0i")
 scale = Vector2(0.40625, 0.40625)
 texture = ExtResource("2_p625y")
 

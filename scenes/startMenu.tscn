@@ -26,16 +26,19 @@ font_size = 348
 shadow_size = 14
 shadow_color = Color(0, 0, 0, 0.7529412)
 
-[sub_resource type="FontVariation" id="FontVariation_rc7r4"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_8fwge"]
 line_spacing = 8.0
-font = SubResource("FontVariation_rc7r4")
-font_size = 48
+font = ExtResource("3_8fwge")
+font_size = 45
 
 [sub_resource type="LabelSettings" id="LabelSettings_7kfin"]
 font = ExtResource("3_8fwge")
 font_size = 63
+
+[sub_resource type="Environment" id="Environment_8fwge"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_saturation = 0.0
 
 [node name="StartMenu" type="Control" unique_id=1045805721]
 layout_mode = 3
@@ -137,6 +140,9 @@ text = "EXIT"
 label_settings = SubResource("LabelSettings_7kfin")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2122248317]
+environment = SubResource("Environment_8fwge")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
