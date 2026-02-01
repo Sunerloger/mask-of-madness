@@ -12,6 +12,7 @@
 [ext_resource type="Shader" uid="uid://2wf1mrrl3qs8" path="res://shaders/post_processing_effects/canvas_item/wobble_shader.gdshader" id="10_choun"]
 [ext_resource type="Script" uid="uid://8664ji0a8snp" path="res://assets/scripts/sanity_modifier.gd" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://jnra64qpi14s" path="res://scenes/levelExit.tscn" id="12_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://ca01v24n3wu8q" path="res://assets/sprites/world_environment_colorcorrection_gradient.tres" id="12_trceg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trceg"]
 texture = ExtResource("2_eb6dy")
@@ -251,6 +252,12 @@ shader = ExtResource("10_choun")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_ya4ey")
 shader_parameter/intensity = 1000.0
 
+[sub_resource type="Environment" id="Environment_a8y0u"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_saturation = 0.5
+adjustment_color_correction = ExtResource("12_trceg")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
 size = Vector2(13050, 6558)
 
@@ -366,6 +373,9 @@ offset_bottom = 37.0
 scale = Vector2(47.999996, 27)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="SanityModifier" unique_id=1585395005]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SanityModifier" unique_id=1695219813]
+environment = SubResource("Environment_a8y0u")
 
 [node name="UILayer2" type="CanvasLayer" parent="." unique_id=691363350]
 
