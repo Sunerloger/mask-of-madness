@@ -9,7 +9,7 @@ var ZIGZAG_DIRECTION = 1
 @export var strength: int = 3
 
 func _physics_process(delta: float) -> void:
-	if(playerIsLooking()):
+	if(player.isLookingAt(global_position)):
 		SPEED = 0
 	else:
 		SPEED = MOVE_SPEED

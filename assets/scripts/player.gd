@@ -11,6 +11,7 @@ var start_scale_y := 1.0
 var facing_direction: Vector2
 
 var PLAYER_LOOK_ANGLE_THRESHOLD = 0.3
+const VIEW_DISTANCE:float  = 1000
 const min_light_cone_scale = 0.5
 const max_light_cone_scale = 1.5
 
@@ -69,6 +70,7 @@ func setConeScale(value:float) -> void:
 	lightCone.scale.y = value
 
 func isLookingAt(point: Vector2):
+	var distance = global_position.distance_to(point)
 	var directionToPoint = (point - global_position).normalized()
 	var look_cos_angle = facing_direction.dot(directionToPoint)
-	return look_cos_angle > PLAYER_LOOK_ANGLE_THRESHOLD
+	return (look_cos_angle > PLAYER_LOOK_ANGLE_THRESHOLD) && (distance < VIEW_DISTANCE) 
