@@ -6,6 +6,10 @@ const SPEED = 200.0
 const RADIUS = 200
 
 @export var strength: int = 5
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+func _ready() -> void:
+	animated_sprite_2d.material.light_mode = 2
 
 func get_strength():
 	return strength
