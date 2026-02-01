@@ -1,32 +1,167 @@
 [gd_scene format=3 uid="uid://0wsly6guv5jr"]
 
 [ext_resource type="Script" uid="uid://causv5klvq26r" path="res://assets/scripts/sanity_pickup.gd" id="1_7cqbe"]
-[ext_resource type="Texture2D" uid="uid://bgyr7vejpxskd" path="res://assets/sprites/battery.png" id="2_ahnjd"]
+[ext_resource type="Texture2D" uid="uid://cmde64l2ffhy4" path="res://assets/sprites/leaves.png" id="2_jc6o3"]
+[ext_resource type="Texture2D" uid="uid://ckgkijy3bsi2e" path="res://assets/sprites/pickup_sanity.png" id="3_jc6o3"]
+[ext_resource type="AudioStream" uid="uid://d4fdjhymtogns" path="res://assets/sounds/pickup.mp3" id="3_jc6o3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
-size = Vector2(59, 25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc6o3"]
+size = Vector2(45.875, 45.25)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ahnjd"]
-light_mode = 2
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nscs2"]
+
+[sub_resource type="Gradient" id="Gradient_p625y"]
+offsets = PackedFloat32Array(0, 0.56626505)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_agqce"]
+gradient = SubResource("Gradient_p625y")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f6qnh"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ea5om"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.51506853, 0.9373661), 0.0, 0.0, 0, 0, Vector2(0.9917809, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t8rnq"]
+curve = SubResource("Curve_ea5om")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_grgo1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(14, 10.145, 1)
+angle_min = -64.69999
+angle_max = 40.400013
+gravity = Vector3(0, -40, 0)
+linear_accel_min = -21.250002
+linear_accel_max = 35.979996
+scale_min = 1.3
+scale_max = 1.5
+alpha_curve = SubResource("CurveTexture_t8rnq")
+anim_speed_min = 0.9
+anim_speed_max = 0.9
+
+[sub_resource type="Gradient" id="Gradient_0stcx"]
+offsets = PackedFloat32Array(0, 0.5770235)
+colors = PackedColorArray(1, 1, 1, 0.16862746, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ul8py"]
+gradient = SubResource("Gradient_0stcx")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kiqh3"]
+
+[sub_resource type="Animation" id="Animation_fpbny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("soft_glow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j00j4"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("soft_glow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 0.5, 1, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1), Vector2(1.4, 1.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jo3w"]
+_data = {
+&"RESET": SubResource("Animation_fpbny"),
+&"new_animation": SubResource("Animation_j00j4")
+}
 
 [node name="SanityPickup" type="Area2D" unique_id=707575940]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_7cqbe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=105963796]
-position = Vector2(2.5, -3.5)
-shape = SubResource("RectangleShape2D_sugp2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1288786284]
+visible = false
+shape = SubResource("RectangleShape2D_jc6o3")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1592054348]
-material = SubResource("CanvasItemMaterial_ahnjd")
-scale = Vector2(1.28125, 1.28125)
-texture = ExtResource("2_ahnjd")
+[node name="shadow" type="Sprite2D" parent="." unique_id=1948562382]
+material = SubResource("CanvasItemMaterial_nscs2")
+position = Vector2(0, 5.5)
+scale = Vector2(1, 0.453125)
+texture = SubResource("GradientTexture2D_agqce")
 
-[node name="DespawnTimer" type="Timer" parent="." unique_id=67852756]
+[node name="leaves_particles" type="GPUParticles2D" parent="." unique_id=2033694980]
+material = SubResource("CanvasItemMaterial_f6qnh")
+amount = 17
+texture = ExtResource("2_jc6o3")
+lifetime = 2.2399999999999998
+process_material = SubResource("ParticleProcessMaterial_grgo1")
+
+[node name="soft_glow" type="Sprite2D" parent="." unique_id=1789447152]
+position = Vector2(0, -17)
+texture = SubResource("GradientTexture2D_ul8py")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=105472520]
+material = SubResource("CanvasItemMaterial_kiqh3")
+position = Vector2(0, -7)
+texture = ExtResource("3_jc6o3")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1995697903]
 wait_time = 60.0
 one_shot = true
 autostart = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=789143216]
+libraries/ = SubResource("AnimationLibrary_8jo3w")
+autoplay = &"new_animation"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1037372034]
+stream = ExtResource("3_jc6o3")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
