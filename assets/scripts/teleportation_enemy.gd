@@ -18,7 +18,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		SPEED = MOVE_SPEED
 	velocity = getDirectionToPlayer() * SPEED
-	look_at(player.global_position)
+		# Face movement direction
+	if global_position.x < player.global_position.x:
+		animated_sprite_2d.flip_h = true
+	elif global_position.x > player.global_position.x:
+		animated_sprite_2d.flip_h = false
 	move_and_slide()
 
 # Teleportation timer

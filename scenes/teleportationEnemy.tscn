@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://855g3gkup8e6"]
 
 [ext_resource type="Script" uid="uid://dtalamg5w6ok7" path="res://assets/scripts/teleportation_enemy.gd" id="1_ejgg4"]
-[ext_resource type="Texture2D" uid="uid://cuca4feexyods" path="res://assets/sprites/hunched_enemy.png" id="2_ejgg4"]
+[ext_resource type="Texture2D" uid="uid://b4kbrnhdpwo1s" path="res://assets/sprites/hunched_enemy.png" id="2_ejgg4"]
 [ext_resource type="Texture2D" uid="uid://c4nf0xkav8icj" path="res://assets/sprites/dust02.png" id="2_jf04x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vw3a7"]
@@ -72,7 +72,6 @@ script = ExtResource("1_ejgg4")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=14359778]
-visible = false
 position = Vector2(-7.15, 0)
 scale = Vector2(5.5, 5.5)
 shape = SubResource("CircleShape2D_vw3a7")
@@ -94,6 +93,7 @@ process_material = SubResource("ParticleProcessMaterial_0vovk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=170997950]
 material = SubResource("CanvasItemMaterial_jf04x")
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_m3wb4")
 autoplay = "default"
 frame_progress = 0.38269466
