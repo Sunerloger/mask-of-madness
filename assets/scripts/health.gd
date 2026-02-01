@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var max_health: float = 100
+@onready var audio = $AudioStreamPlayer;
 var _current_health
 
 
@@ -24,4 +25,5 @@ func get_health():
 
 func update_current_health(health_diff: float):
 	_current_health = clamp(_current_health + health_diff, 0, max_health)
+	audio.play();
 	_update_current_health_ui()
