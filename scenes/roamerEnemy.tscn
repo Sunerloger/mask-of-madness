@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://daj7u563usssc"]
 
 [ext_resource type="Script" uid="uid://bf1kwi27rlutx" path="res://assets/scripts/roamerEnemy.gd" id="1_1gyx3"]
-[ext_resource type="Texture2D" uid="uid://bgyr7vejpxskd" path="res://assets/sprites/crow.png" id="2_hpcfp"]
+[ext_resource type="Texture2D" uid="uid://cvvac7idfrm26" path="res://assets/sprites/crow.png" id="2_hpcfp"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ojp5j"]
 cull_mode = 1
 polygon = PackedVector2Array(8.421345, 0, 5.052807, -107.59896, -0.8421345, -129.11876, -5.052807, -107.59896, -8.421345, 21.519793, -7.5792103, 193.67813, 0, 301.2771, 7.5792103, 215.19792)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snias"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hpcfp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkedb"]
 atlas = ExtResource("2_hpcfp")
@@ -49,7 +51,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 6.0
+"speed": 5.0
 }]
 
 [node name="roamerEnemy" type="CharacterBody2D" unique_id=549486802]
@@ -64,10 +66,10 @@ scale = Vector2(1.182245, 0.046468846)
 occluder = SubResource("OccluderPolygon2D_ojp5j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032296548]
-visible = false
 scale = Vector2(3.8672519, 3.8672512)
 shape = SubResource("CircleShape2D_snias")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1268258353]
+material = SubResource("CanvasItemMaterial_hpcfp")
 sprite_frames = SubResource("SpriteFrames_sdxvu")
 autoplay = "default"
