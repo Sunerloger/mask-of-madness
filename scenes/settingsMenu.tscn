@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://cwx75h8acqudo"]
+
+[ext_resource type="Shader" uid="uid://chai7bgsgg0us" path="res://shaders/post_processing_effects/canvas_item/glitch_shader.gdshader" id="1_egwj7"]
+[ext_resource type="Script" uid="uid://dtpb1477h614m" path="res://assets/scripts/settings_menu.gd" id="1_iswfj"]
+[ext_resource type="Texture2D" uid="uid://dl160p1s76qwk" path="res://assets/textures/black-glitch-effect-texture.jpg" id="2_iswfj"]
+[ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="3_tyaol"]
+[ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="4_dkncv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07bsi"]
+shader = ExtResource("1_egwj7")
+shader_parameter/glitch_chance = 0.2
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_density = 14.0
+shader_parameter/slice_strength = 0.38
+shader_parameter/shake_strength = 0.02
+shader_parameter/chroma_offset = 0.016
+shader_parameter/noise_strength = 0.2
+shader_parameter/color_flash_strength = 0.4
+shader_parameter/scanline_strength = 0.18
+shader_parameter/local_warp_strength = 0.14
+shader_parameter/flip_chance = 0.15
+
+[sub_resource type="LabelSettings" id="LabelSettings_huukw"]
+font = ExtResource("3_tyaol")
+font_size = 348
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.7529412)
+
+[sub_resource type="LabelSettings" id="LabelSettings_psrcj"]
+line_spacing = 8.0
+font = ExtResource("4_dkncv")
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_ywpsc"]
+font = ExtResource("4_dkncv")
+font_size = 55
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iswfj"]
+
+[sub_resource type="Environment" id="Environment_iswfj"]
+background_mode = 3
+adjustment_enabled = true
+adjustment_saturation = 0.0
+
+[node name="SettingsMenu" type="Control" unique_id=34395262]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iswfj")
+metadata/_edit_vertical_guides_ = [351.0]
+metadata/_edit_horizontal_guides_ = [378.0]
+
+[node name="Background color" type="ColorRect" parent="." unique_id=247436738]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.056435257, 0.006712084, 0.009262486, 1)
+
+[node name="Background texture" type="TextureRect" parent="." unique_id=1369845046]
+material = SubResource("ShaderMaterial_07bsi")
+layout_mode = 0
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 4864.9053
+offset_bottom = 2721.324
+scale = Vector2(0.394371, 0.394371)
+texture = ExtResource("2_iswfj")
+expand_mode = 1
+
+[node name="MainTitle" type="Label" parent="." unique_id=1803965886]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 1916.0
+offset_bottom = 398.0
+text = "The Mask Of Madness"
+label_settings = SubResource("LabelSettings_huukw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="." unique_id=1962787541]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 289.0
+offset_right = 2673.0
+offset_bottom = 656.0
+text = "Toggle: Goal emits a 
+shimmer when low on sanity"
+label_settings = SubResource("LabelSettings_psrcj")
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="." unique_id=545414204]
+layout_mode = 0
+offset_left = 1428.0
+offset_top = 811.0
+offset_right = 1810.0488
+offset_bottom = 989.0
+
+[node name="Label" type="Label" parent="Back" unique_id=1077221950]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 384.0
+offset_bottom = 175.0
+text = "BACK"
+label_settings = SubResource("LabelSettings_ywpsc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoalHelp" type="Button" parent="." unique_id=893192354]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 378.0
+offset_right = 734.0488
+offset_bottom = 556.0
+theme_override_fonts/font = ExtResource("4_dkncv")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iswfj")
+toggle_mode = true
+action_mode = 0
+text = "GOAL HELP"
+
+[node name="Label" type="Label" parent="GoalHelp" unique_id=123382368]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 384.0
+offset_bottom = 175.0
+text = "GOAL HELP"
+label_settings = SubResource("LabelSettings_ywpsc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1034498002]
+environment = SubResource("Environment_iswfj")
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="GoalHelp" to="." method="_on_goal_help_toggled"]

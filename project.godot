@@ -18,6 +18,7 @@ config/icon="res://assets/sprites/icon.svg"
 [autoload]
 
 Global="*uid://dsni4rqa6f2u6"
+GlobalSettings="*uid://d4cj1stocfgeh"
 
 [display]
 

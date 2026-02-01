@@ -6,6 +6,9 @@ extends PointLight2D
 
 @export var edge_margin := -100 # how far from the screen edge the light stays
 
+func _ready():
+	visible = GlobalSettings.goal_help_setting_pressed
+	
 func _process(delta: float) -> void:
 	if not exit or not player or not camera:
 		return
