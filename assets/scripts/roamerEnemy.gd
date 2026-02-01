@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 
 	var move_dir: Vector2
 
-	if playerIsLooking():
+	if player.isLookingAt(global_position):
 		# Orbit + push back to radius
 		var radius_error = getDistanceToPlayer() - RADIUS
 		move_dir = circle_dir + dir_to_player * clamp(radius_error / RADIUS, -1.0, 1.0)

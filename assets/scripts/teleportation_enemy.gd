@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 
 # Teleportation timer
 func _on_timer_timeout():
-	if(playerIsLooking()):
+	if(player.isLookingAt(global_position)):
 		return
 	var direction = getDirectionToPlayer()
 	if(isFarFromPlayer()): # stop zig zaging when really close to player 

@@ -10,6 +10,7 @@ var elapsed := 0.0
 var start_scale_y := 1.0
 var facing_direction: Vector2
 
+var PLAYER_LOOK_ANGLE_THRESHOLD = 0.3
 const min_light_cone_scale = 0.5
 const max_light_cone_scale = 1.5
 
@@ -66,3 +67,8 @@ func isNearExit() -> bool:
 # if value is set to 1 the angle is 45°
 func setConeScale(value:float) -> void:
 	lightCone.scale.y = value
+
+func isLookingAt(point: Vector2):
+	var directionToPoint = (point - global_position).normalized()
+	var look_cos_angle = facing_direction.dot(directionToPoint)
+	return look_cos_angle > PLAYER_LOOK_ANGLE_THRESHOLD
