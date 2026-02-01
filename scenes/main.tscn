@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://jnra64qpi14s" path="res://scenes/levelExit.tscn" id="12_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://ctq56rnrdf1w5" path="res://assets/sprites/world_environment_colorcorrection_gradient.tres" id="12_trceg"]
 [ext_resource type="AudioStream" uid="uid://d1edgf2i3cact" path="res://assets/sounds/sanity_1.mp3" id="13_trceg"]
-[ext_resource type="Script" uid="uid://b0x4ws7kgox5c" path="res://assets/sounds/ambiance_switcher.gd" id="14_jkv2x"]
+[ext_resource type="Script" uid="uid://b0x4ws7kgox5c" path="res://assets/scripts/ambiance_switcher.gd" id="14_jkv2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trceg"]
 texture = ExtResource("2_eb6dy")
