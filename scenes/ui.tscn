@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bhjnjkxtqu12"]
 
 [ext_resource type="Script" uid="uid://co2otlmsne3pf" path="res://assets/scripts/sanity_bar.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://b553mwfw57eqc" path="res://assets/scripts/ui.gd" id="1_wm3ai"]
 [ext_resource type="Script" uid="uid://c8ogi3fq4tje3" path="res://assets/scripts/health_bar.gd" id="2_x4jx1"]
-[ext_resource type="Texture2D" uid="uid://bhpkgaljdmrk2" path="res://assets/sprites/ui_overlay.png" id="3_yev5y"]
+[ext_resource type="Texture2D" uid="uid://dkd0mj5av2c1v" path="res://assets/sprites/ui_overlay.png" id="3_yev5y"]
 [ext_resource type="Texture2D" uid="uid://ddxlas7f31rp2" path="res://assets/sprites/ui_player_mask.png" id="4_gdt2y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdt2y"]
@@ -56,6 +57,7 @@ corner_detail = 6
 [node name="UI" type="Control" unique_id=87986574]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_wm3ai")
 
 [node name="SanityBar" type="ProgressBar" parent="." unique_id=229974149]
 layout_mode = 0
@@ -89,4 +91,3 @@ centered = false
 position = Vector2(114, 132)
 texture = ExtResource("4_gdt2y")
 hframes = 5
-frame = 1

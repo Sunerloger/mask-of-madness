@@ -33,4 +33,4 @@ func update_current_sanity(sanity_change: float):
 
 
 func _on_timer_timeout() -> void:
-	update_current_sanity(-1)
+	update_current_sanity(-10)
