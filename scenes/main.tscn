@@ -271,6 +271,7 @@ script = ExtResource("14_jkv2x")
 
 [node name="Ambiance1" type="AudioStreamPlayer" parent="AmbianceSwitcher" unique_id=2097863873]
 stream = ExtResource("13_trceg")
+volume_db = -5.0
 autoplay = true
 
 [node name="Ambiance2" type="AudioStreamPlayer" parent="AmbianceSwitcher" unique_id=1970742188]
