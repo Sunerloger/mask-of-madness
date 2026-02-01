@@ -111,6 +111,7 @@ script = ExtResource("4_dqkch")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Health" unique_id=1734927398]
 stream = ExtResource("6_y4r1p")
+volume_db = -15.0
 
 [node name="PlayerHurtBox" type="Area2D" parent="." unique_id=1819875844]
 collision_layer = 2
