@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://c5gjjv5xvxprk"]
+[gd_scene format=3 uid="uid://c72nqblrd43p0"]
 
 [ext_resource type="Script" uid="uid://bh2i11u6v0wry" path="res://assets/scripts/victoryScene.gd" id="1_03u3s"]
 [ext_resource type="FontFile" uid="uid://b65rpdwf3d27x" path="res://assets/Stranger back in the Night.ttf" id="1_ppghm"]
 [ext_resource type="Shader" uid="uid://chai7bgsgg0us" path="res://shaders/post_processing_effects/canvas_item/glitch_shader.gdshader" id="2_1va6s"]
 [ext_resource type="FontFile" uid="uid://6boc037qkvhb" path="res://assets/Freshman.ttf" id="2_e22nn"]
 [ext_resource type="Texture2D" uid="uid://dl160p1s76qwk" path="res://assets/textures/black-glitch-effect-texture.jpg" id="4_aelo8"]
+[ext_resource type="AudioStream" uid="uid://bb32uwfdr335u" path="res://assets/sounds/door.mp3" id="6_eb10i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb10i"]
 shader = ExtResource("2_1va6s")
@@ -108,6 +109,10 @@ vertical_alignment = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1746712549]
 environment = SubResource("Environment_alq1q")
+
+[node name="GateSfx" type="AudioStreamPlayer" parent="." unique_id=522844435]
+stream = ExtResource("6_eb10i")
+autoplay = true
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
